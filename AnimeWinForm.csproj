@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Logic\" />
     <Folder Include="Media\" />
+    <Folder Include="DB\" />
   </ItemGroup>
 
   <ItemGroup>

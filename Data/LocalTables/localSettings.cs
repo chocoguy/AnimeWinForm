@@ -11,23 +11,23 @@ namespace AnimeWinForm.Data.LocalTables
    [Table("localsettings")]
    public class localSettings
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         [Column("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
-        [Column("setupdone")]
+        [Column("setupDone")]
         public bool SetupDone { get; set; }
         
-        [Column("storagelocal")]
+        [Column("storageLocal")]
         public bool StorageLocal { get; set; }
 
-        [Column("connectionstring")]
+        [Column("connectionString")]
         public string ConnectionString { get; set; }
 
-        [Column("defaultseason")]
+        [Column("defaultSeason")]
         public string DefaultSeason { get; set; }
 
-        [Column("defaultyear")]
+        [Column("defaultYear")]
         public string DefaultYear { get; set; }
     }
 }

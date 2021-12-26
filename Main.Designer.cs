@@ -33,6 +33,8 @@ namespace AnimeWinForm
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSetup = new System.Windows.Forms.Button();
+            this.btnLocalDB = new System.Windows.Forms.Button();
+            this.btnHome = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -64,11 +66,34 @@ namespace AnimeWinForm
             this.btnSetup.UseVisualStyleBackColor = true;
             this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
             // 
+            // btnLocalDB
+            // 
+            this.btnLocalDB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLocalDB.Location = new System.Drawing.Point(784, 256);
+            this.btnLocalDB.Name = "btnLocalDB";
+            this.btnLocalDB.Size = new System.Drawing.Size(75, 23);
+            this.btnLocalDB.TabIndex = 3;
+            this.btnLocalDB.Text = "InitLocalDB";
+            this.btnLocalDB.UseVisualStyleBackColor = true;
+            this.btnLocalDB.Click += new System.EventHandler(this.btnLocalDB_Click);
+            // 
+            // btnHome
+            // 
+            this.btnHome.Location = new System.Drawing.Point(490, 146);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(75, 23);
+            this.btnHome.TabIndex = 4;
+            this.btnHome.Text = "Home";
+            this.btnHome.UseVisualStyleBackColor = true;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 561);
+            this.Controls.Add(this.btnHome);
+            this.Controls.Add(this.btnLocalDB);
             this.Controls.Add(this.btnSetup);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -86,5 +111,7 @@ namespace AnimeWinForm
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSetup;
+        private System.Windows.Forms.Button btnLocalDB;
+        private System.Windows.Forms.Button btnHome;
     }
 }

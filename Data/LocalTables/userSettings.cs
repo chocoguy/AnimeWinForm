@@ -9,8 +9,17 @@ namespace AnimeWinForm.Data.LocalTables
 {
     class userSettings
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
         [Column("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
+
+        [Column("user")]
+        public string User { get; set; }
+
+        [Column("theme")]
+        public bool Color { get; set; }
+
+        [Column("backgroundColor")]
+        public bool BackgroundColor { get; set; }
     }
 }

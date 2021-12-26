@@ -43,3 +43,6 @@ C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.c
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.SetupForms.frmSetup.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.SetupForms.frmWelcome.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmHome.resources
+C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmAddAnime.resources
+C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmViewAnime.resources
+C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmEditAnime.resources
