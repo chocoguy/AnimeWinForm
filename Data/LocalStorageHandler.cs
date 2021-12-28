@@ -23,14 +23,18 @@ namespace AnimeWinForm.Data
             LocalDb.CreateTable<AnimeEpisodes>();
         }
 
-        public void GetAllAnime()
+        public List<Anime> GetAllAnime()
         {
-            var animes = LocalDb.Query<Anime>("SELECT * FROM Anime");
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
 
-            foreach(var anime in animes)
-            {
-                Console.WriteLine(anime.Season);
-            }
+            string query = $"SELECT * FROM Anime";
+
+            var results = conn.Query<Anime>(query);
+
+            conn.Close();
+
+            return results;
         }
 
 
@@ -73,6 +77,22 @@ namespace AnimeWinForm.Data
 
 
         }
+
+        public List<AnimeEpisodes> GetAnimeEpisodesByAnimeId(string Animeid)
+        {
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
+
+            string query = $"SELECT * FROM AnimeEpisodes WHERE Animeid = '{Animeid}' ";
+
+            var results = conn.Query<AnimeEpisodes>(query);
+
+            conn.Close();
+            return results;
+
+
+        }
+        
 
         public int GetEpisodeCurrentlyOn(string Animeid)
         {
@@ -120,6 +140,28 @@ namespace AnimeWinForm.Data
             var updatedAnimeEpisode = conn.Query<AnimeEpisodes>(query2);
 
             conn.Close();
+        }
+
+
+        public void MarkAnimeEpisode(string Mark, string AnimeEpisodeId)
+        {
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
+            string query;
+
+            if (Mark == "MarkWatched")
+            {
+                query = $"UPDATE AnimeEpisodes SET status = 'Watched' WHERE id = '{AnimeEpisodeId}'";
+            }
+            else
+            {
+                query = $"UPDATE AnimeEpisodes SET status = 'Skipped' WHERE id = '{AnimeEpisodeId}'";
+            }
+
+            var result = conn.Query<AnimeEpisodes>(query);
+
+            conn.Close();
+
         }
 
 

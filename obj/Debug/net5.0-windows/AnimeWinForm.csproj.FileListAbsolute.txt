@@ -46,3 +46,4 @@ C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.f
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmAddAnime.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmViewAnime.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmEditAnime.resources
+C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmViewAllAnime.resources

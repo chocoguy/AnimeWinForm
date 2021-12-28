@@ -68,6 +68,7 @@ namespace AnimeWinForm
             this.btnViewAnime.TabIndex = 3;
             this.btnViewAnime.Text = "View Anime";
             this.btnViewAnime.UseVisualStyleBackColor = true;
+            this.btnViewAnime.Click += new System.EventHandler(this.btnViewAnime_Click);
             // 
             // grdRecentWatch
             // 
@@ -107,6 +108,7 @@ namespace AnimeWinForm
             this.MinimumSize = new System.Drawing.Size(1050, 600);
             this.Name = "frmHome";
             this.Text = "Home";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmHome_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.grdRecentWatch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

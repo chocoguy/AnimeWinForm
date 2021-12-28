@@ -7,7 +7,7 @@ using SQLite;
 
 namespace AnimeWinForm.Data.AnimeTables
 {
-    class AnimeEpisodes
+    public class AnimeEpisodes
     {
         [PrimaryKey]
         [Column("id")]

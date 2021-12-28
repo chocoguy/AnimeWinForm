@@ -93,5 +93,21 @@ namespace AnimeWinForm
             //MessageBox.Show(row.Cells["id"].Value.ToString());
            // MessageBox.Show(e.RowIndex.ToString());
         }
+
+        private void btnViewAnime_Click(object sender, EventArgs e)
+        {
+            frmViewAllAnime formViewAllAnime = new frmViewAllAnime();
+            this.Hide();
+            formViewAllAnime.Show();
+
+        }
+
+        private void frmHome_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            //Main formMain = new Main();
+            //this.Hide();
+            //formMain.Show();
+            Application.Exit();
+        }
     }
 }
