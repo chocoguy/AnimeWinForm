@@ -19,49 +19,33 @@ namespace AnimeWinForm
 
             LocalStorageHandler localStorageHandler = new LocalStorageHandler();
 
-
-            //add columns manually for more control
-
-            grdRecentWatch.ColumnCount = 6;
-            grdRecentWatch.Columns[0].Name = "Title";
-            grdRecentWatch.Columns[1].Name = "Season";
-            grdRecentWatch.Columns[2].Name = "Year";
-            grdRecentWatch.Columns[3].Name = "Episode";
-            grdRecentWatch.Columns[4].Name = "Status";
-            grdRecentWatch.Columns[5].Name = "id";
+            grdAnime.ColumnCount = 6;
+            grdAnime.Columns[0].Name = "Title";
+            grdAnime.Columns[1].Name = "Season";
+            grdAnime.Columns[2].Name = "Year";
+            grdAnime.Columns[3].Name = "Episode";
+            grdAnime.Columns[4].Name = "Status";
+            grdAnime.Columns[5].Name = "id";
 
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            grdRecentWatch.Columns.Add(btn);
+            grdAnime.Columns.Add(btn);
             btn.HeaderText = "";
-            btn.Text = "Edit";
+            btn.Text = "View";
             btn.Name = "btn";
             btn.UseColumnTextForButtonValue = true;
 
-            //string[] row = new string[] { "1", "product1" };
-            //grdRecentWatch.Rows.Add(row);
-            var animes = localStorageHandler.GetRecentlyWatchedAnime();
-            
+
+            var animes = localStorageHandler.GetAllAnime();
 
             foreach (var anime in animes)
             {
                 var currentEpisodeOnAnime = localStorageHandler.GetEpisodeCurrentlyOn(anime.Id);
                 string[] row = new string[] { anime.Title, anime.Season, anime.Year, currentEpisodeOnAnime.ToString() + "/" + anime.Episodes, anime.Status, anime.Id };
-
-                grdRecentWatch.Rows.Add(row);
-
-
-               
-
-
+                grdAnime.Rows.Add(row);
             }
 
-            grdRecentWatch.Columns[5].Visible = false;
+            grdAnime.Columns[5].Visible = false;
 
-            //grdRecentWatch.DataSource = animes;
-            
-
- 
-            
 
         }
 
@@ -77,30 +61,7 @@ namespace AnimeWinForm
             formAnime.Show();
         }
 
-        private void grdRecentWatch_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-            DataGridViewRow row = grdRecentWatch.Rows[e.RowIndex];
-           // MessageBox.Show(row.Cells[5].Value.ToString());
-
-            frmViewAnime formViewAnime = new frmViewAnime(row.Cells[5].Value.ToString());
-            formViewAnime.Show();
-
-
-            //MessageBox.Show(grdRecentWatch.SelectedRows[0].Index.ToString());
-            //int currentRowIndex = e.RowIndex;
-            //DataGridView row = this.grdRecentWatch.SelectedRows[2];
-            //MessageBox.Show(row.Cells["id"].Value.ToString());
-           // MessageBox.Show(e.RowIndex.ToString());
-        }
-
-        private void btnViewAnime_Click(object sender, EventArgs e)
-        {
-            frmViewAllAnime formViewAllAnime = new frmViewAllAnime();
-            this.Hide();
-            formViewAllAnime.Show();
-
-        }
 
         private void frmHome_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -108,6 +69,14 @@ namespace AnimeWinForm
             //this.Hide();
             //formMain.Show();
             Application.Exit();
+        }
+
+        private void grdAnime_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = grdAnime.Rows[e.RowIndex];
+
+            frmViewAnime formViewAnime = new frmViewAnime(row.Cells[5].Value.ToString());
+            formViewAnime.Show();
         }
     }
 }

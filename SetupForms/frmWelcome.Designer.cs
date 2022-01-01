@@ -32,7 +32,6 @@ namespace AnimeWinForm.SetupForms
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmWelcome));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSetup = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -56,20 +55,6 @@ namespace AnimeWinForm.SetupForms
             this.label2.TabIndex = 1;
             this.label2.Text = "AnimeWinForm";
             // 
-            // btnSetup
-            // 
-            this.btnSetup.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.btnSetup.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnSetup.FlatAppearance.BorderSize = 0;
-            this.btnSetup.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSetup.Location = new System.Drawing.Point(400, 223);
-            this.btnSetup.Name = "btnSetup";
-            this.btnSetup.Size = new System.Drawing.Size(164, 72);
-            this.btnSetup.TabIndex = 2;
-            this.btnSetup.Text = "Setup!";
-            this.btnSetup.UseVisualStyleBackColor = false;
-            this.btnSetup.Click += new System.EventHandler(this.btnSetup_Click);
-            // 
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
@@ -86,7 +71,6 @@ namespace AnimeWinForm.SetupForms
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1034, 561);
             this.Controls.Add(this.lblVersion);
-            this.Controls.Add(this.btnSetup);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -103,7 +87,6 @@ namespace AnimeWinForm.SetupForms
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSetup;
         private System.Windows.Forms.Label lblVersion;
     }
 }

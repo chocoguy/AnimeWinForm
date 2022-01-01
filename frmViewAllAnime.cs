@@ -30,7 +30,7 @@ namespace AnimeWinForm
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             grdAnime.Columns.Add(btn);
             btn.HeaderText = "";
-            btn.Text = "Edit";
+            btn.Text = "View";
             btn.Name = "btn";
             btn.UseColumnTextForButtonValue = true;
 
