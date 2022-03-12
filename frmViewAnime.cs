@@ -30,11 +30,9 @@ namespace AnimeWinForm
             lblEpisodes.Text = currentAnime.Episodes.ToString();
             lblRating.Text = currentAnime.Rating;
             lblSeason.Text = currentAnime.Season;
-            lblShortTitle.Text = currentAnime.ShortTitle;
-            lblStartWatch.Text = currentAnime.StartWatch.ToString();
             lblStatus.Text = currentAnime.Status;
-            lblStopWatch.Text = currentAnime.StopWatch.ToString();
             lblYear.Text = currentAnime.Year;
+            txtReview.Text = currentAnime.Review;
             
         }
 
@@ -57,13 +55,16 @@ namespace AnimeWinForm
 
         private void btnIncrement_Click(object sender, EventArgs e)
         {
+            frmHome home = (frmHome)ActiveForm;
             int currentEpisode = localStorageHandler.GetEpisodeCurrentlyOn(currentAnime.Id);
             if (currentEpisode == currentAnime.Episodes)
             {
-                MessageBox.Show("Anime has been finished, Can't increment!");
+                //MessageBox.Show("Anime has been finished, Can't increment!");
+                home.newMessage("Anime finished, Can't increment!", "fail");
                 return;
             }
             localStorageHandler.IncrementAnimeEpisodeByOne(currentAnime.Id);
+            home.newMessage("Episode Incremented!", "success");
             this.Refresh();
         }
 
@@ -72,10 +73,23 @@ namespace AnimeWinForm
 
         }
 
+        private List<string> InterviewQuestion(string inputt)
+        {
+            string useless = inputt;
+            List<string> myArray = new List<string>();
+            myArray.Add("('a', 4)");
+            myArray.Add("('b', 3)");
+            myArray.Add("('c', 2)");
+            myArray.Add("('a', 1)");
+            return myArray;
+        }
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmEditAnime formEditAnime = new frmEditAnime(currentAnime.Id);
-            formEditAnime.Show();
+            frmHome home = (frmHome)ActiveForm;
+            home.editSingleAnime(currentAnime.Id);
+            //frmEditAnime formEditAnime = new frmEditAnime(currentAnime.Id);
+            //formEditAnime.Show();
         }
     }
 }

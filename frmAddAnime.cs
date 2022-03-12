@@ -32,10 +32,12 @@ namespace AnimeWinForm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            localStorageHandler.SaveNewAnime(txtTitle.Text, txtShortTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, "Not Started");
-            MessageBox.Show("Anime Added!");
+            localStorageHandler.SaveNewAnime(txtTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, "Not Started");
+
+            frmHome home = (frmHome)ActiveForm;
+            home.newMessage("Anime Saved!", "success");
+            
             txtTitle.Clear();
-            txtShortTitle.Clear();
             numEpisodes.Value = 0;
 
         }
@@ -69,6 +71,12 @@ namespace AnimeWinForm
         private void cmbSeason_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = false;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            frmHome home = (frmHome)ActiveForm;
+            home.newMessage("Anime Saved!", "success");
         }
 
         //private void txtEpisodes_TextChanged(object sender, EventArgs e)

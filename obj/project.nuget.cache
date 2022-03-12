@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "2EZd3l24QuMkwPlGLj8jIs3uoHEahJjOilTqXS7olcHgspXUEksuJ8yiSWoJgeKQBkuOYhcR3+m0E4y4098/9Q==",
+  "dgSpecHash": "GQ43nGnNR+Ou/qoR2lVp13bMLuxEBJbT2Dq3cCypF3tIWasWWyTiq1MeK7GJn3FoREUOPAlylg2xmfrU8dcIZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ezarc\\source\\repos\\AnimeWinForm\\AnimeWinForm.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ezarc\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\ezarc\\.nuget\\packages\\metromodernui\\1.4.0\\metromodernui.1.4.0.nupkg.sha512",
     "C:\\Users\\ezarc\\.nuget\\packages\\sqlite\\3.13.0\\sqlite.3.13.0.nupkg.sha512",
     "C:\\Users\\ezarc\\.nuget\\packages\\sqlite-net-pcl\\1.8.116\\sqlite-net-pcl.1.8.116.nupkg.sha512",
     "C:\\Users\\ezarc\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.0.4\\sqlitepclraw.bundle_green.2.0.4.nupkg.sha512",
@@ -13,5 +14,16 @@
     "C:\\Users\\ezarc\\.nuget\\packages\\sqlitepclraw.provider.dynamic_cdecl\\2.0.4\\sqlitepclraw.provider.dynamic_cdecl.2.0.4.nupkg.sha512",
     "C:\\Users\\ezarc\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'MetroModernUI 1.4.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "MetroModernUI",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
 }

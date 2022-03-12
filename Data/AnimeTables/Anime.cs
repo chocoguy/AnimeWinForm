@@ -16,14 +16,12 @@ namespace AnimeWinForm.Data.AnimeTables
         [Column("title")]
         public string Title { get; set; }
         
-        [Column("shortTitle")]
-        public string ShortTitle { get; set; }
-
         [Column("season")]
         public string Season { get; set; }
 
         [Column("year")]
         public string Year { get; set; }
+
         [NotNull]
         [Column("episodes")]
         public int Episodes { get; set; }
@@ -33,13 +31,11 @@ namespace AnimeWinForm.Data.AnimeTables
 
         [Column("rating")]
         public string Rating { get; set; }
-        [Column("startWatch")]
-        public DateTime StartWatch { get; set; }
-
-        [Column("stopWatch")]
-        public DateTime StopWatch { get; set; }
 
         [Column("lastWatched")]
         public int LastWatched { get; set; }
+
+        [Column("review")]
+        public string Review { get; set; }
     }
 }

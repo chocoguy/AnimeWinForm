@@ -26,7 +26,7 @@ namespace AnimeWinForm
             currentAnime = localStorageHandler.GetAnimeById(Animeid);
             this.Text = "AnimeWinForm - " + "Edit " + currentAnime.Title;
             txtTitle.Text = currentAnime.Title;
-            txtShortTitle.Text = currentAnime.ShortTitle;
+            txtReview.Text = currentAnime.Review;
             cmbYear.Text = currentAnime.Year;
             cmbSeason.Text = currentAnime.Season;
             numEpisodes.Value = currentAnime.Episodes;
@@ -89,6 +89,7 @@ namespace AnimeWinForm
         {
             DataGridViewRow row = grdAnimeEpisodes.Rows[e.RowIndex];
             DataGridViewColumn column = grdAnimeEpisodes.Columns[e.ColumnIndex];
+            frmHome home = (frmHome)ActiveForm;
 
 
             //if(row.Cells[1].Value.ToString() == "NotStarted" && row.Cells[0].Value.ToString() != "1")
@@ -99,15 +100,17 @@ namespace AnimeWinForm
             //{
             //MessageBox.Show(row.Cells[2].Value.ToString());
             //MessageBox.Show(column.HeaderText);
-                bool canMark = localStorageHandler.CheckAnimeEpisodeCount(row.Cells[2].Value.ToString(), currentAnime.Id);
+            bool canMark = localStorageHandler.CheckAnimeEpisodeCount(row.Cells[2].Value.ToString(), currentAnime.Id);
                 if(canMark == false)
                 {
-                    MessageBox.Show("Mark earlier episodes as 'Watched' or 'Skipped' to mark this episode");
+                    //MessageBox.Show("Mark earlier episodes as 'Watched' or 'Skipped' to mark this episode");
+                    home.newMessage("Mark earlier episode to mark this episode", "fail");
                 }
                 else
                 {
                 localStorageHandler.MarkAnimeEpisode(column.HeaderText, row.Cells[2].Value.ToString());
-                MessageBox.Show("Marked");
+                //MessageBox.Show("Marked");
+                home.newMessage("Marked!", "success");
                 this.Refresh();
                 }
            // }
@@ -123,67 +126,22 @@ namespace AnimeWinForm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            bool canUpdate = localStorageHandler.UpdateAnime(currentAnime.Id, txtTitle.Text, txtShortTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, cmbStatus.Text, cmbRating.Text);
+            frmHome home = (frmHome)ActiveForm;
+            bool canUpdate = localStorageHandler.UpdateAnime(currentAnime.Id, txtTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, cmbStatus.Text, cmbRating.Text, txtReview.Text);
 
             if(canUpdate == false)
             {
-                MessageBox.Show("Episodes cannot be decremented, only incremented");
+                //MessageBox.Show("Episodes cannot be decremented, only incremented");
+                home.newMessage("Episodes cannot be decremented!", "fail");
             }
             else
             {
-                MessageBox.Show("Anime Updated");
+                home.newMessage("Anime Updated!", "success");
             }
 
         }
 
-        private void btnStartWatch_Click(object sender, EventArgs e)
-        {
-            string startDate;
-            if (currentAnime.StartWatch.Year == 0001)
-            {
-                startDate = "None";
-
-            }
-            else
-            {
-                startDate = currentAnime.StartWatch.ToString();
-            }
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show($"Would you like to start watching this anime? current start date is: {startDate}", "Start Watching", buttons);
-            if(result == DialogResult.Yes)
-            {
-                localStorageHandler.SetAnimeWatching(currentAnime.Id);
-            }
-            else
-            {
-
-            }
-        }
-
-
-
-        private void btnStopWatch_Click(object sender, EventArgs e)
-        {
-            string stopDate;
-            if (currentAnime.StartWatch.Year == 0001)
-            {
-                stopDate = "None";
-            }
-            else
-            {
-                stopDate = currentAnime.StopWatch.ToString();
-            }
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result = MessageBox.Show($"Would you like to start watching this anime? current stop date is: {stopDate}", "Sop Watching", buttons);
-            if (result == DialogResult.Yes)
-            {
-                localStorageHandler.SetAnimeWatched(currentAnime.Id);
-            }
-            else
-            {
-
-            }
-        }
+      
 
         private void btnRecentWatch_Click(object sender, EventArgs e)
         {

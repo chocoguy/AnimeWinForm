@@ -51,9 +51,10 @@ namespace AnimeWinForm
         private void grdAnime_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = grdAnime.Rows[e.RowIndex];
-
-            frmViewAnime formViewAnime = new frmViewAnime(row.Cells[5].Value.ToString());
-            formViewAnime.Show();
+            frmHome home = (frmHome)ActiveForm;
+            home.viewSingleAnime(row.Cells[5].Value.ToString());
+           // frmViewAnime formViewAnime = new frmViewAnime(row.Cells[5].Value.ToString());
+           // formViewAnime.Show();
         }
 
         private void btnBack_Click(object sender, EventArgs e)

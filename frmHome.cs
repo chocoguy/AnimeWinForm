@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnimeWinForm.Data;
@@ -16,50 +18,10 @@ namespace AnimeWinForm
         public frmHome()
         {
             InitializeComponent();
-
-            LocalStorageHandler localStorageHandler = new LocalStorageHandler();
-
-            grdAnime.ColumnCount = 6;
-            grdAnime.Columns[0].Name = "Title";
-            grdAnime.Columns[1].Name = "Season";
-            grdAnime.Columns[2].Name = "Year";
-            grdAnime.Columns[3].Name = "Episode";
-            grdAnime.Columns[4].Name = "Status";
-            grdAnime.Columns[5].Name = "id";
-
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            grdAnime.Columns.Add(btn);
-            btn.HeaderText = "";
-            btn.Text = "View";
-            btn.Name = "btn";
-            btn.UseColumnTextForButtonValue = true;
-
-
-            var animes = localStorageHandler.GetAllAnime();
-
-            foreach (var anime in animes)
-            {
-                var currentEpisodeOnAnime = localStorageHandler.GetEpisodeCurrentlyOn(anime.Id);
-                string[] row = new string[] { anime.Title, anime.Season, anime.Year, currentEpisodeOnAnime.ToString() + "/" + anime.Episodes, anime.Status, anime.Id };
-                grdAnime.Rows.Add(row);
-            }
-
-            grdAnime.Columns[5].Visible = false;
-
+            initQuotes();
 
         }
 
-        private void lblBorder_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAddAnime_Click(object sender, EventArgs e)
-        {
-            frmAddAnime formAnime = new frmAddAnime();
-            this.Hide();
-            formAnime.Show();
-        }
 
 
 
@@ -71,12 +33,131 @@ namespace AnimeWinForm
             Application.Exit();
         }
 
-        private void grdAnime_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewRow row = grdAnime.Rows[e.RowIndex];
+        //private void metroButton1_Click(object sender, EventArgs e)
+        //{
+        //    this.mainPanel.Controls.Clear();
+        //    frmViewAllAnime frm = new frmViewAllAnime() { TopLevel = false, TopMost = true };
+        //    frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+        //    frm.Dock = DockStyle.Fill;
+        //    this.mainPanel.Controls.Add(frm);
+        //    frm.Show();
+        //}
 
-            frmViewAnime formViewAnime = new frmViewAnime(row.Cells[5].Value.ToString());
-            formViewAnime.Show();
+        private void btnAddAnime_Click(object sender, EventArgs e)
+        {
+            this.mainPanel.Controls.Clear();
+            frmAddAnime frmAnime = new frmAddAnime() { TopLevel = false, TopMost = true };
+            frmAnime.FormBorderStyle = FormBorderStyle.None;
+            frmAnime.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frmAnime);
+            frmAnime.Show();
+        }
+
+        public void viewSingleAnime(string AnimeID)
+        {
+            this.mainPanel.Controls.Clear();
+            frmViewAnime frmAnime = new frmViewAnime(AnimeID) { TopLevel = false, TopMost = true };
+            frmAnime.FormBorderStyle = FormBorderStyle.None;
+            frmAnime.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frmAnime);
+            frmAnime.Show();
+
+
+        }
+
+        public void editSingleAnime(string AnimeID)
+        {
+            this.mainPanel.Controls.Clear();
+            frmEditAnime frmAnime = new frmEditAnime(AnimeID) { TopLevel = false, TopMost = true };
+            frmAnime.FormBorderStyle = FormBorderStyle.None;
+            frmAnime.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frmAnime);
+            frmAnime.Show();
+
+        }
+
+        public void viewAllAnime()
+        {
+            this.mainPanel.Controls.Clear();
+            frmViewAllAnime frm = new frmViewAllAnime() { TopLevel = false, TopMost = true };
+            frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frm);
+            frm.Show();
+        }
+
+        public async void newMessage(string Message, string Type)
+        {
+            if(Type == "success")
+            {
+                txtInfoQuote.Text = Message;
+                txtInfoQuote.ForeColor = Color.Green;
+            }else if(Type == "fail")
+            {
+                txtInfoQuote.Text = Message;
+                txtInfoQuote.ForeColor = Color.Red;
+            }
+            else
+            {
+                txtInfoQuote.Text = Message;
+                txtInfoQuote.ForeColor = Color.Blue;
+            }
+            await Task.Delay(2000);
+            txtInfoQuote.Text = "";
+        }
+
+       
+
+        private void initQuotes()
+        {
+            var rand = new Random();
+            List<string> quotes = new List<string>();
+
+            quotes.Add("\"Mann I hate fish\"");
+            quotes.Add("\"Enjoy right now, today...\"");
+            quotes.Add("\"I spent $1000+ on Anime Figures\"");
+            quotes.Add("\"STUTUTUTUTU\"");
+            quotes.Add("\"4Chan rotted my brain\"");
+            quotes.Add("\"2007 Toyota Camry\"");
+            quotes.Add("\"Change the Future!!!\"");
+            quotes.Add("\"103.5 Dawn FM!!!\"");
+            quotes.Add("\"Call me if you get lost\"");
+            quotes.Add("\"I spent 3 months on this...\"");
+            quotes.Add("\"I aint got TIMEEEEE!!!\"");
+            quotes.Add("\"Decahex.com comming soon...\"");
+            quotes.Add("\"Decahex 2022\"");
+            quotes.Add("\"Created by Chocoguy\"");
+            quotes.Add("\"Usagi Chan best Girl!\"");
+            quotes.Add("\"I hate Ads\"");
+            quotes.Add("\"sure\"");
+
+            int randQuoteNum = rand.Next(17);
+
+            txtInfoQuote.Text = quotes[randQuoteNum];
+
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            this.mainPanel.Controls.Clear();
+            frmAbout frmabout = new frmAbout { TopLevel = false, TopMost = true };
+            frmabout.FormBorderStyle = FormBorderStyle.None;
+            frmabout.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frmabout);
+            frmabout.Show();
+        }
+
+        private void btnViewAnime_Click(object sender, EventArgs e)
+        {
+            this.mainPanel.Controls.Clear();
+            frmViewAllAnime frm = new frmViewAllAnime() { TopLevel = false, TopMost = true };
+            frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frm);
+            frm.Show();
         }
     }
+
+
+
 }

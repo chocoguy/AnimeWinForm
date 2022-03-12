@@ -29,10 +29,9 @@ namespace AnimeWinForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditAnime));
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtShortTitle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cmbYear = new System.Windows.Forms.ComboBox();
             this.dsadsa = new System.Windows.Forms.Label();
@@ -44,12 +43,10 @@ namespace AnimeWinForm
             this.label8 = new System.Windows.Forms.Label();
             this.cmbRating = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.grdAnimeEpisodes = new System.Windows.Forms.DataGridView();
-            this.btnStartWatch = new System.Windows.Forms.Button();
-            this.btnStopWatch = new System.Windows.Forms.Button();
-            this.btnRecentWatch = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtReview = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numEpisodes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAnimeEpisodes)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +55,7 @@ namespace AnimeWinForm
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(22, 28);
+            this.label1.Location = new System.Drawing.Point(18, 92);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 21);
             this.label1.TabIndex = 0;
@@ -66,33 +63,16 @@ namespace AnimeWinForm
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(104, 39);
+            this.txtTitle.Location = new System.Drawing.Point(102, 94);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(208, 23);
             this.txtTitle.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(22, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 21);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Short Title:";
-            // 
-            // txtShortTitle
-            // 
-            this.txtShortTitle.Location = new System.Drawing.Point(104, 76);
-            this.txtShortTitle.Name = "txtShortTitle";
-            this.txtShortTitle.Size = new System.Drawing.Size(208, 23);
-            this.txtShortTitle.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(24, 95);
+            this.label3.Location = new System.Drawing.Point(18, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 21);
             this.label3.TabIndex = 4;
@@ -359,7 +339,7 @@ namespace AnimeWinForm
             "2148",
             "2149",
             "2150"});
-            this.cmbYear.Location = new System.Drawing.Point(104, 106);
+            this.cmbYear.Location = new System.Drawing.Point(102, 124);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(208, 23);
             this.cmbYear.TabIndex = 5;
@@ -368,7 +348,7 @@ namespace AnimeWinForm
             // 
             this.dsadsa.AutoSize = true;
             this.dsadsa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dsadsa.Location = new System.Drawing.Point(20, 124);
+            this.dsadsa.Location = new System.Drawing.Point(18, 153);
             this.dsadsa.Name = "dsadsa";
             this.dsadsa.Size = new System.Drawing.Size(63, 21);
             this.dsadsa.TabIndex = 6;
@@ -383,7 +363,7 @@ namespace AnimeWinForm
             "Spring",
             "Summer",
             "Fall"});
-            this.cmbSeason.Location = new System.Drawing.Point(104, 135);
+            this.cmbSeason.Location = new System.Drawing.Point(102, 155);
             this.cmbSeason.Name = "cmbSeason";
             this.cmbSeason.Size = new System.Drawing.Size(208, 23);
             this.cmbSeason.TabIndex = 7;
@@ -392,7 +372,7 @@ namespace AnimeWinForm
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(22, 157);
+            this.label4.Location = new System.Drawing.Point(18, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 21);
             this.label4.TabIndex = 8;
@@ -400,7 +380,7 @@ namespace AnimeWinForm
             // 
             // numEpisodes
             // 
-            this.numEpisodes.Location = new System.Drawing.Point(104, 164);
+            this.numEpisodes.Location = new System.Drawing.Point(104, 188);
             this.numEpisodes.Name = "numEpisodes";
             this.numEpisodes.Size = new System.Drawing.Size(208, 23);
             this.numEpisodes.TabIndex = 13;
@@ -409,7 +389,7 @@ namespace AnimeWinForm
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(22, 195);
+            this.label7.Location = new System.Drawing.Point(20, 219);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 21);
             this.label7.TabIndex = 18;
@@ -425,7 +405,7 @@ namespace AnimeWinForm
             "Dropped",
             "Stalled",
             "NotStarted"});
-            this.cmbStatus.Location = new System.Drawing.Point(104, 197);
+            this.cmbStatus.Location = new System.Drawing.Point(104, 221);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(208, 23);
             this.cmbStatus.TabIndex = 19;
@@ -434,7 +414,7 @@ namespace AnimeWinForm
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(22, 227);
+            this.label8.Location = new System.Drawing.Point(20, 254);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 21);
             this.label8.TabIndex = 20;
@@ -494,36 +474,27 @@ namespace AnimeWinForm
             "11",
             "Masterpiece",
             "Magnum Opus"});
-            this.cmbRating.Location = new System.Drawing.Point(104, 229);
+            this.cmbRating.Location = new System.Drawing.Point(104, 256);
             this.cmbRating.Name = "cmbRating";
             this.cmbRating.Size = new System.Drawing.Size(208, 23);
             this.cmbRating.TabIndex = 21;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(713, 415);
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSave.Location = new System.Drawing.Point(780, 368);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(92, 33);
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(632, 415);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(75, 23);
-            this.btnBack.TabIndex = 23;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(493, 9);
+            this.label9.Location = new System.Drawing.Point(491, 36);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(109, 21);
             this.label9.TabIndex = 24;
@@ -534,7 +505,7 @@ namespace AnimeWinForm
             this.grdAnimeEpisodes.AllowUserToAddRows = false;
             this.grdAnimeEpisodes.AllowUserToDeleteRows = false;
             this.grdAnimeEpisodes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdAnimeEpisodes.Location = new System.Drawing.Point(318, 39);
+            this.grdAnimeEpisodes.Location = new System.Drawing.Point(316, 66);
             this.grdAnimeEpisodes.Name = "grdAnimeEpisodes";
             this.grdAnimeEpisodes.ReadOnly = true;
             this.grdAnimeEpisodes.RowTemplate.Height = 25;
@@ -542,49 +513,34 @@ namespace AnimeWinForm
             this.grdAnimeEpisodes.TabIndex = 25;
             this.grdAnimeEpisodes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAnimeEpisodes_CellClick);
             // 
-            // btnStartWatch
+            // label5
             // 
-            this.btnStartWatch.Location = new System.Drawing.Point(419, 415);
-            this.btnStartWatch.Name = "btnStartWatch";
-            this.btnStartWatch.Size = new System.Drawing.Size(95, 23);
-            this.btnStartWatch.TabIndex = 26;
-            this.btnStartWatch.Text = "Start Watching";
-            this.btnStartWatch.UseVisualStyleBackColor = true;
-            this.btnStartWatch.Click += new System.EventHandler(this.btnStartWatch_Click);
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(20, 292);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 21);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Review:";
             // 
-            // btnStopWatch
+            // txtReview
             // 
-            this.btnStopWatch.Location = new System.Drawing.Point(520, 415);
-            this.btnStopWatch.Name = "btnStopWatch";
-            this.btnStopWatch.Size = new System.Drawing.Size(106, 23);
-            this.btnStopWatch.TabIndex = 27;
-            this.btnStopWatch.Text = "Stop Watching";
-            this.btnStopWatch.UseVisualStyleBackColor = true;
-            this.btnStopWatch.Click += new System.EventHandler(this.btnStopWatch_Click);
-            // 
-            // btnRecentWatch
-            // 
-            this.btnRecentWatch.Location = new System.Drawing.Point(273, 415);
-            this.btnRecentWatch.Name = "btnRecentWatch";
-            this.btnRecentWatch.Size = new System.Drawing.Size(140, 23);
-            this.btnRecentWatch.TabIndex = 28;
-            this.btnRecentWatch.Text = "Set Recently Watched";
-            this.btnRecentWatch.UseVisualStyleBackColor = true;
-            this.btnRecentWatch.Visible = false;
-            this.btnRecentWatch.Click += new System.EventHandler(this.btnRecentWatch_Click);
+            this.txtReview.Location = new System.Drawing.Point(104, 294);
+            this.txtReview.Name = "txtReview";
+            this.txtReview.Size = new System.Drawing.Size(208, 23);
+            this.txtReview.TabIndex = 30;
             // 
             // frmEditAnime
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnRecentWatch);
-            this.Controls.Add(this.btnStopWatch);
-            this.Controls.Add(this.btnStartWatch);
+            this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(884, 411);
+            this.Controls.Add(this.txtReview);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.grdAnimeEpisodes);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbRating);
             this.Controls.Add(this.label8);
@@ -596,10 +552,11 @@ namespace AnimeWinForm
             this.Controls.Add(this.dsadsa);
             this.Controls.Add(this.cmbYear);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtShortTitle);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(900, 450);
+            this.MinimumSize = new System.Drawing.Size(900, 450);
             this.Name = "frmEditAnime";
             this.Text = "AnimeWinForm - Edit balls";
             ((System.ComponentModel.ISupportInitialize)(this.numEpisodes)).EndInit();
@@ -613,8 +570,6 @@ namespace AnimeWinForm
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtShortTitle;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbYear;
         private System.Windows.Forms.Label dsadsa;
@@ -626,11 +581,9 @@ namespace AnimeWinForm
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cmbRating;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridView grdAnimeEpisodes;
-        private System.Windows.Forms.Button btnStartWatch;
-        private System.Windows.Forms.Button btnStopWatch;
-        private System.Windows.Forms.Button btnRecentWatch;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtReview;
     }
 }

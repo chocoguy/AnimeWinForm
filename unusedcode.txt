@@ -1,0 +1,46 @@
+﻿ private void btnStartWatch_Click(object sender, EventArgs e)
+        {
+            string startDate;
+            if (currentAnime.StartWatch.Year == 0001)
+            {
+                startDate = "None";
+
+            }
+            else
+            {
+                startDate = currentAnime.StartWatch.ToString();
+            }
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show($"Would you like to start watching this anime? current start date is: {startDate}", "Start Watching", buttons);
+            if(result == DialogResult.Yes)
+            {
+                localStorageHandler.SetAnimeWatching(currentAnime.Id);
+            }
+            else
+            {
+
+            }
+        }
+
+                private void btnStopWatch_Click(object sender, EventArgs e)
+        {
+            string stopDate;
+            if (currentAnime.StartWatch.Year == 0001)
+            {
+                stopDate = "None";
+            }
+            else
+            {
+                stopDate = currentAnime.StopWatch.ToString();
+            }
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show($"Would you like to start watching this anime? current stop date is: {stopDate}", "Sop Watching", buttons);
+            if (result == DialogResult.Yes)
+            {
+                localStorageHandler.SetAnimeWatched(currentAnime.Id);
+            }
+            else
+            {
+
+            }
+        }
