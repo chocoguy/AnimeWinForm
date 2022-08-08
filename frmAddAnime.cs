@@ -32,9 +32,32 @@ namespace AnimeWinForm
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            frmHome home = (frmHome)ActiveForm;
+
+            if (txtTitle.Text == "")
+            {
+                home.newMessage("Title is required", "fail");
+                return;
+            }
+            else if(cmbSeason.Text == "")
+            {
+                home.newMessage("Season is required", "fail");
+                return;
+            }
+            else if(cmbYear.Text == "")
+            {
+                home.newMessage("Year is required", "fail");
+                return;
+            }
+            else if(numEpisodes.Value == 0)
+            {
+                home.newMessage("at least 1 episode is required", "fail");
+                return;
+            }
+
             localStorageHandler.SaveNewAnime(txtTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, "Not Started");
 
-            frmHome home = (frmHome)ActiveForm;
+
             home.newMessage("Anime Saved!", "success");
             
             txtTitle.Clear();

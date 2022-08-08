@@ -30,10 +30,42 @@ namespace AnimeWinForm
             lblEpisodes.Text = currentAnime.Episodes.ToString();
             lblRating.Text = currentAnime.Rating;
             lblSeason.Text = currentAnime.Season;
-            lblStatus.Text = currentAnime.Status;
             lblYear.Text = currentAnime.Year;
             txtReview.Text = currentAnime.Review;
-            
+
+            switch (currentAnime.Status)
+            {
+                case "Watching":
+                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.ForeColor = Color.LawnGreen;
+                    break;
+
+                case "Finished":
+                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.ForeColor = Color.LawnGreen;
+                    break;
+
+                case "Dropped":
+                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.ForeColor = Color.Crimson;
+                    break;
+
+                case "Stalled":
+                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.ForeColor = Color.Yellow;
+                    break;
+
+                case "Not Started":
+                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.ForeColor = Color.DodgerBlue;
+                    break;
+
+                default:
+                    lblStatus.Text = "Unknown";
+                    lblStatus.ForeColor = Color.Crimson;
+                    break;
+            }
+
         }
 
         private void lblSeason_Click(object sender, EventArgs e)

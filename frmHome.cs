@@ -18,7 +18,7 @@ namespace AnimeWinForm
         public frmHome()
         {
             InitializeComponent();
-            initQuotes();
+            //initQuotes();
 
         }
 
@@ -90,20 +90,20 @@ namespace AnimeWinForm
         {
             if(Type == "success")
             {
-                txtInfoQuote.Text = Message;
-                txtInfoQuote.ForeColor = Color.Green;
+                infoQuotelbl.Text = Message;
+                infoQuotelbl.ForeColor = Color.SpringGreen;
             }else if(Type == "fail")
             {
-                txtInfoQuote.Text = Message;
-                txtInfoQuote.ForeColor = Color.Red;
+                infoQuotelbl.Text = Message;
+                infoQuotelbl.ForeColor = Color.Crimson;
             }
             else
             {
-                txtInfoQuote.Text = Message;
-                txtInfoQuote.ForeColor = Color.Blue;
+                infoQuotelbl.Text = Message;
+                infoQuotelbl.ForeColor = Color.DarkTurquoise;
             }
             await Task.Delay(2000);
-            txtInfoQuote.Text = "";
+            infoQuotelbl.Text = "";
         }
 
        
@@ -133,7 +133,7 @@ namespace AnimeWinForm
 
             int randQuoteNum = rand.Next(17);
 
-            txtInfoQuote.Text = quotes[randQuoteNum];
+            infoQuotelbl.Text = quotes[randQuoteNum];
 
         }
 
@@ -156,6 +156,8 @@ namespace AnimeWinForm
             this.mainPanel.Controls.Add(frm);
             frm.Show();
         }
+
+
     }
 
 

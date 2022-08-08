@@ -184,13 +184,18 @@ namespace AnimeWinForm.Data
             if (Mark == "MarkWatched")
             {
                 query = $"UPDATE AnimeEpisodes SET status = 'Watched' WHERE id = '{AnimeEpisodeId}'";
+                var result = conn.Query<AnimeEpisodes>(query);
+            }
+            else if(Mark == "MarkSkipped")
+            {
+                query = $"UPDATE AnimeEpisodes SET status = 'Skipped' WHERE id = '{AnimeEpisodeId}'";
+                var result = conn.Query<AnimeEpisodes>(query);
             }
             else
             {
-                query = $"UPDATE AnimeEpisodes SET status = 'Skipped' WHERE id = '{AnimeEpisodeId}'";
+
             }
 
-            var result = conn.Query<AnimeEpisodes>(query);
 
             conn.Close();
 
@@ -266,6 +271,24 @@ namespace AnimeWinForm.Data
             return true;
 
             
+
+
+        }
+
+
+        public void DeleteAnime(string AnimeId)
+        {
+
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
+            string query2;
+
+            string deleteAnimeQuery = $"DELETE FROM Anime WHERE id = '{AnimeId}'";
+            string deleteAnimeEpisodes = $"DELETE FROM AnimeEpisodes WHERE Animeid = '{AnimeId}'";
+
+            conn.Query<Anime>(deleteAnimeQuery);
+            conn.Query<AnimeEpisodes>(deleteAnimeEpisodes);
+
 
 
         }

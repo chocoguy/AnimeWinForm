@@ -3,7 +3,6 @@ C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\AnimeWinForm.d
 C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\AnimeWinForm.runtimeconfig.json
 C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\AnimeWinForm.runtimeconfig.dev.json
 C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\AnimeWinForm.dll
-C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\ref\AnimeWinForm.dll
 C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\AnimeWinForm.pdb
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.csproj.AssemblyReference.cache
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.Main.resources
@@ -47,8 +46,6 @@ C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.f
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmViewAnime.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmEditAnime.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmViewAllAnime.resources
-C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\MetroFramework.Design.dll
-C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\MetroFramework.Fonts.dll
-C:\Users\ezarc\source\repos\AnimeWinForm\bin\Debug\net5.0-windows\MetroFramework.dll
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.frmAbout.resources
 C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\AnimeWinForm.Properties.Resources.resources
+C:\Users\ezarc\source\repos\AnimeWinForm\obj\Debug\net5.0-windows\refint\AnimeWinForm.dll

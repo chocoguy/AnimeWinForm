@@ -29,6 +29,9 @@ namespace AnimeWinForm
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditAnime));
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -47,6 +50,7 @@ namespace AnimeWinForm
             this.grdAnimeEpisodes = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.txtReview = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numEpisodes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAnimeEpisodes)).BeginInit();
             this.SuspendLayout();
@@ -54,16 +58,18 @@ namespace AnimeWinForm
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(18, 92);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(8, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 21);
+            this.label1.Size = new System.Drawing.Size(55, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Title:";
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(102, 94);
+            this.txtTitle.Location = new System.Drawing.Point(102, 66);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(208, 23);
             this.txtTitle.TabIndex = 1;
@@ -71,10 +77,12 @@ namespace AnimeWinForm
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(18, 121);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(8, 93);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 21);
+            this.label3.Size = new System.Drawing.Size(56, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Year:";
             // 
@@ -83,81 +91,6 @@ namespace AnimeWinForm
             this.cmbYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbYear.FormattingEnabled = true;
             this.cmbYear.Items.AddRange(new object[] {
-            "1895",
-            "1896",
-            "1897",
-            "1898",
-            "1899",
-            "1900",
-            "1901",
-            "1902",
-            "1903",
-            "1904",
-            "1905",
-            "1906",
-            "1907",
-            "1908",
-            "1909",
-            "1910",
-            "1911",
-            "1912",
-            "1913",
-            "1914",
-            "1915",
-            "1916",
-            "1917",
-            "1918",
-            "1919",
-            "1920",
-            "1921",
-            "1922",
-            "1923",
-            "1924",
-            "1925",
-            "1926",
-            "1927",
-            "1928",
-            "1929",
-            "1930",
-            "1931",
-            "1932",
-            "1933",
-            "1934",
-            "1935",
-            "1936",
-            "1937",
-            "1938",
-            "1939",
-            "1940",
-            "1941",
-            "1942",
-            "1943",
-            "1944",
-            "1945",
-            "1946",
-            "1947",
-            "1948",
-            "1949",
-            "1950",
-            "1951",
-            "1952",
-            "1953",
-            "1954",
-            "1955",
-            "1956",
-            "1957",
-            "1958",
-            "1959",
-            "1960",
-            "1961",
-            "1962",
-            "1963",
-            "1964",
-            "1965",
-            "1966",
-            "1967",
-            "1968",
-            "1969",
             "1970",
             "1971",
             "1972",
@@ -218,128 +151,8 @@ namespace AnimeWinForm
             "2027",
             "2028",
             "2029",
-            "2030",
-            "2031",
-            "2032",
-            "2033",
-            "2034",
-            "2035",
-            "2036",
-            "2037",
-            "2038",
-            "2039",
-            "2040",
-            "2041",
-            "2042",
-            "2043",
-            "2044",
-            "2045",
-            "2046",
-            "2047",
-            "2048",
-            "2049",
-            "2050",
-            "2051",
-            "2052",
-            "2053",
-            "2054",
-            "2055",
-            "2056",
-            "2057",
-            "2058",
-            "2059",
-            "2060",
-            "2061",
-            "2062",
-            "2063",
-            "2064",
-            "2065",
-            "2066",
-            "2067",
-            "2068",
-            "2069",
-            "2070",
-            "2071",
-            "2072",
-            "2073",
-            "2074",
-            "2075",
-            "2076",
-            "2077",
-            "2078",
-            "2079",
-            "2080",
-            "2081",
-            "2082",
-            "2083",
-            "2084",
-            "2085",
-            "2086",
-            "2087",
-            "2088",
-            "2089",
-            "2090",
-            "2091",
-            "2092",
-            "2093",
-            "2094",
-            "2095",
-            "2096",
-            "2097",
-            "2098",
-            "2099",
-            "2100",
-            "2101",
-            "2102",
-            "2103",
-            "2104",
-            "2105",
-            "2106",
-            "2107",
-            "2108",
-            "2109",
-            "2110",
-            "2111",
-            "2112",
-            "2113",
-            "2114",
-            "2115",
-            "2116",
-            "2117",
-            "2118",
-            "2119",
-            "2120",
-            "2121",
-            "2122",
-            "2123",
-            "2124",
-            "2125",
-            "2126",
-            "2127",
-            "2128",
-            "2129",
-            "2130",
-            "2131",
-            "2132",
-            "2133",
-            "2134",
-            "2135",
-            "2136",
-            "2137",
-            "2138",
-            "2139",
-            "2140",
-            "2141",
-            "2142",
-            "2143",
-            "2144",
-            "2145",
-            "2146",
-            "2147",
-            "2148",
-            "2149",
-            "2150"});
-            this.cmbYear.Location = new System.Drawing.Point(102, 124);
+            "2030"});
+            this.cmbYear.Location = new System.Drawing.Point(103, 96);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(208, 23);
             this.cmbYear.TabIndex = 5;
@@ -347,10 +160,12 @@ namespace AnimeWinForm
             // dsadsa
             // 
             this.dsadsa.AutoSize = true;
-            this.dsadsa.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dsadsa.Location = new System.Drawing.Point(18, 153);
+            this.dsadsa.BackColor = System.Drawing.Color.Transparent;
+            this.dsadsa.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dsadsa.ForeColor = System.Drawing.Color.White;
+            this.dsadsa.Location = new System.Drawing.Point(8, 125);
             this.dsadsa.Name = "dsadsa";
-            this.dsadsa.Size = new System.Drawing.Size(63, 21);
+            this.dsadsa.Size = new System.Drawing.Size(80, 25);
             this.dsadsa.TabIndex = 6;
             this.dsadsa.Text = "Season:";
             // 
@@ -363,7 +178,7 @@ namespace AnimeWinForm
             "Spring",
             "Summer",
             "Fall"});
-            this.cmbSeason.Location = new System.Drawing.Point(102, 155);
+            this.cmbSeason.Location = new System.Drawing.Point(104, 127);
             this.cmbSeason.Name = "cmbSeason";
             this.cmbSeason.Size = new System.Drawing.Size(208, 23);
             this.cmbSeason.TabIndex = 7;
@@ -371,16 +186,18 @@ namespace AnimeWinForm
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(18, 185);
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(8, 157);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 21);
+            this.label4.Size = new System.Drawing.Size(94, 25);
             this.label4.TabIndex = 8;
             this.label4.Text = "Episodes:";
             // 
             // numEpisodes
             // 
-            this.numEpisodes.Location = new System.Drawing.Point(104, 188);
+            this.numEpisodes.Location = new System.Drawing.Point(104, 160);
             this.numEpisodes.Name = "numEpisodes";
             this.numEpisodes.Size = new System.Drawing.Size(208, 23);
             this.numEpisodes.TabIndex = 13;
@@ -388,10 +205,12 @@ namespace AnimeWinForm
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(20, 219);
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(10, 191);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 21);
+            this.label7.Size = new System.Drawing.Size(72, 25);
             this.label7.TabIndex = 18;
             this.label7.Text = "Status:";
             // 
@@ -401,11 +220,11 @@ namespace AnimeWinForm
             this.cmbStatus.FormattingEnabled = true;
             this.cmbStatus.Items.AddRange(new object[] {
             "Watching",
-            "Watched",
+            "Finished",
             "Dropped",
             "Stalled",
-            "NotStarted"});
-            this.cmbStatus.Location = new System.Drawing.Point(104, 221);
+            "Not Started"});
+            this.cmbStatus.Location = new System.Drawing.Point(104, 193);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(208, 23);
             this.cmbStatus.TabIndex = 19;
@@ -413,10 +232,12 @@ namespace AnimeWinForm
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(20, 254);
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(10, 226);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 21);
+            this.label8.Size = new System.Drawing.Size(75, 25);
             this.label8.TabIndex = 20;
             this.label8.Text = "Rating:";
             // 
@@ -474,61 +295,113 @@ namespace AnimeWinForm
             "11",
             "Masterpiece",
             "Magnum Opus"});
-            this.cmbRating.Location = new System.Drawing.Point(104, 256);
+            this.cmbRating.Location = new System.Drawing.Point(104, 228);
             this.cmbRating.Name = "cmbRating";
             this.cmbRating.Size = new System.Drawing.Size(208, 23);
             this.cmbRating.TabIndex = 21;
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(780, 368);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(780, 369);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 33);
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(491, 36);
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(518, 33);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 21);
+            this.label9.Size = new System.Drawing.Size(163, 30);
             this.label9.TabIndex = 24;
             this.label9.Text = "Episode Editor";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // grdAnimeEpisodes
             // 
             this.grdAnimeEpisodes.AllowUserToAddRows = false;
             this.grdAnimeEpisodes.AllowUserToDeleteRows = false;
+            this.grdAnimeEpisodes.AllowUserToResizeRows = false;
+            this.grdAnimeEpisodes.BackgroundColor = System.Drawing.Color.Black;
+            this.grdAnimeEpisodes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdAnimeEpisodes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdAnimeEpisodes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Cyan;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Violet;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdAnimeEpisodes.DefaultCellStyle = dataGridViewCellStyle2;
+            this.grdAnimeEpisodes.GridColor = System.Drawing.Color.Black;
             this.grdAnimeEpisodes.Location = new System.Drawing.Point(316, 66);
             this.grdAnimeEpisodes.Name = "grdAnimeEpisodes";
             this.grdAnimeEpisodes.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdAnimeEpisodes.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdAnimeEpisodes.RowTemplate.Height = 25;
-            this.grdAnimeEpisodes.Size = new System.Drawing.Size(470, 297);
+            this.grdAnimeEpisodes.Size = new System.Drawing.Size(556, 297);
             this.grdAnimeEpisodes.TabIndex = 25;
             this.grdAnimeEpisodes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAnimeEpisodes_CellClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(20, 292);
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(10, 264);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 21);
+            this.label5.Size = new System.Drawing.Size(79, 25);
             this.label5.TabIndex = 29;
             this.label5.Text = "Review:";
             // 
             // txtReview
             // 
-            this.txtReview.Location = new System.Drawing.Point(104, 294);
+            this.txtReview.Location = new System.Drawing.Point(104, 266);
+            this.txtReview.Multiline = true;
             this.txtReview.Name = "txtReview";
-            this.txtReview.Size = new System.Drawing.Size(208, 23);
+            this.txtReview.Size = new System.Drawing.Size(208, 97);
             this.txtReview.TabIndex = 30;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.BackColor = System.Drawing.Color.Crimson;
+            this.btnDelete.FlatAppearance.BorderColor = System.Drawing.Color.Crimson;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(682, 369);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(92, 33);
+            this.btnDelete.TabIndex = 31;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // frmEditAnime
             // 
@@ -537,6 +410,7 @@ namespace AnimeWinForm
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(884, 411);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtReview);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.grdAnimeEpisodes);
@@ -585,5 +459,6 @@ namespace AnimeWinForm
         private System.Windows.Forms.DataGridView grdAnimeEpisodes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtReview;
+        private System.Windows.Forms.Button btnDelete;
     }
 }
