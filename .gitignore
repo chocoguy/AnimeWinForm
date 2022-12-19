@@ -6,6 +6,8 @@ bin
 
 obj/release
 ./obj/release
+obj
+/obj
 
 ./personalinfo.txt
 /personalinfo.txt

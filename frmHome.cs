@@ -18,6 +18,7 @@ namespace AnimeWinForm
         public frmHome()
         {
             InitializeComponent();
+            this.Text = "AnimeWinForm - BETA";
             //initQuotes();
 
         }

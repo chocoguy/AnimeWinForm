@@ -16,103 +16,47 @@ namespace AnimeWinForm
     {
 
 
-        LocalStorageHandler localStorageHandler = new LocalStorageHandler();
+        LocalStorageHandler _localStorageHandler = new();
+        frmHome _frmHome;
 
         public frmAddAnime()
         {
             InitializeComponent();
-        }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-            frmHome formHome = new frmHome();
-            this.Hide();
-            formHome.Show();
+            _frmHome = (frmHome)ActiveForm;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            frmHome home = (frmHome)ActiveForm;
-
             if (txtTitle.Text == "")
             {
-                home.newMessage("Title is required", "fail");
+                _frmHome.newMessage("Title is required", "fail");
                 return;
             }
             else if(cmbSeason.Text == "")
             {
-                home.newMessage("Season is required", "fail");
+                _frmHome.newMessage("Season is required", "fail");
                 return;
             }
             else if(cmbYear.Text == "")
             {
-                home.newMessage("Year is required", "fail");
+                _frmHome.newMessage("Year is required", "fail");
                 return;
             }
             else if(numEpisodes.Value == 0)
             {
-                home.newMessage("at least 1 episode is required", "fail");
+                _frmHome.newMessage("at least 1 episode is required", "fail");
                 return;
             }
 
-            localStorageHandler.SaveNewAnime(txtTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, "Not Started");
+            _localStorageHandler.SaveNewAnime(txtTitle.Text, cmbSeason.Text, cmbYear.Text, (int)numEpisodes.Value, "Not Started");
 
 
-            home.newMessage("Anime Saved!", "success");
+            _frmHome.newMessage("Anime Saved!", "success");
             
             txtTitle.Clear();
             numEpisodes.Value = 0;
 
         }
 
-        private void cmbYear_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.Handled = false;
-        }
-
-        private void cmbSeason_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = false;
-        }
-
-        private void cmbYear_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = false;
-        }
-
-        private void cmbYear_TextChanged(object sender, EventArgs e)
-        {
-            //e.Handled = false;
-        }
-
-        private void cmbSeason_TextChanged(object sender, EventArgs e)
-        {
-           // e.Handled = false;
-
-        }
-
-        private void cmbSeason_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.Handled = false;
-        }
-
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            frmHome home = (frmHome)ActiveForm;
-            home.newMessage("Anime Saved!", "success");
-        }
-
-        //private void txtEpisodes_TextChanged(object sender, EventArgs e)
-        //{
-
-        //}
-
-        //private void txtEpisodes_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (char.IsControl(e.KeyChar) == false && char.IsDigit(e.KeyChar) == false && (e.KeyChar != '.'))
-        //    {
-        //        e.Handled = true;
-        //    }
-        //}
     }
 }

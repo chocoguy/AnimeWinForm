@@ -8,16 +8,29 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AnimeWinForm.Data;
+using AnimeWinForm.Data.AnimeTables;
 
 namespace AnimeWinForm
 {
     public partial class frmViewAllAnime : Form
     {
+
+        LocalStorageHandler _localStorageHandler;
+        frmHome _frmHome;
+
         public frmViewAllAnime()
         {
             InitializeComponent();
+            _localStorageHandler = new();
+            _frmHome = (frmHome)ActiveForm;
+            _frmHome.Text = "AnimeWinForm - Collection";
+            InitTable();
+        }
 
-            LocalStorageHandler localStorageHandler = new LocalStorageHandler();
+        private void InitTable()
+        {
+            grdAnime.Rows.Clear();
+            grdAnime.Columns.Clear();
 
             grdAnime.ColumnCount = 6;
             grdAnime.Columns[0].Name = "Title";
@@ -29,22 +42,33 @@ namespace AnimeWinForm
 
             grdAnime.Columns[0].Width = 238;
 
-            DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
-            grdAnime.Columns.Add(btn);
-            btn.HeaderText = "";
-            btn.Text = "View";
-            btn.Name = "btn";
-            btn.UseColumnTextForButtonValue = true;
-            btn.DefaultCellStyle.BackColor = Color.RoyalBlue;
-            btn.DefaultCellStyle.ForeColor = Color.White;
-            btn.FlatStyle = FlatStyle.Popup;
+            DataGridViewButtonColumn viewButton = new();
+            grdAnime.Columns.Add(viewButton);
+            viewButton.HeaderText = "";
+            viewButton.Text = "View";
+            viewButton.Name = "ViewButton";
+            viewButton.UseColumnTextForButtonValue = true;
+            viewButton.DefaultCellStyle.BackColor = Color.RoyalBlue;
+            viewButton.DefaultCellStyle.ForeColor = Color.White;
+            viewButton.FlatStyle = FlatStyle.Popup;
+
+            DataGridViewButtonColumn incrementEpisodeButton = new();
+            grdAnime.Columns.Add(incrementEpisodeButton);
+            incrementEpisodeButton.HeaderText = "";
+            incrementEpisodeButton.Text = "Increment Ep";
+            incrementEpisodeButton.Name = "IncrementEpisodeButton";
+            incrementEpisodeButton.UseColumnTextForButtonValue = true;
+            incrementEpisodeButton.DefaultCellStyle.BackColor = Color.Purple;
+            incrementEpisodeButton.DefaultCellStyle.ForeColor = Color.White;
+            incrementEpisodeButton.FlatStyle = FlatStyle.Popup;
 
 
-            var animes = localStorageHandler.GetAllAnime();
+
+            var animes = _localStorageHandler.GetAllAnime();
 
             foreach (var anime in animes)
             {
-                var currentEpisodeOnAnime = localStorageHandler.GetEpisodeCurrentlyOn(anime.Id);
+                var currentEpisodeOnAnime = _localStorageHandler.GetEpisodeCurrentlyOn(anime.Id);
                 string[] row = new string[] { anime.Title, anime.Season, anime.Year, currentEpisodeOnAnime.ToString() + "/" + anime.Episodes, anime.Status, anime.Id };
                 grdAnime.Rows.Add(row);
             }
@@ -56,38 +80,57 @@ namespace AnimeWinForm
                 grdAnime.Rows[i].Cells[2].Style.ForeColor = Color.Goldenrod;
                 grdAnime.Rows[i].Cells[3].Style.ForeColor = Color.MediumVioletRed;
 
-                Console.WriteLine(grdAnime.Rows[i].Cells[4].Value);
-                if (grdAnime.Rows[i].Cells[4].Value.ToString() == "Not Started")
+                switch (grdAnime.Rows[i].Cells[4].Value.ToString())
                 {
-                    grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.White;
+                    case "Watching":
+                        grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.RoyalBlue;
+                        break;
+                    case "Finished":
+                        grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.ForestGreen;
+                        break;
+                    case "Dropped":
+                        grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.Crimson;
+                        break;
+                    case "Stalled":
+                        grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.Orange;
+                        break;
+                    case "Not Started":
+                        grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.White;
+                        break;
+                    default:
+                        grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.White;
+                        break;
                 }
-                else if (grdAnime.Rows[i].Cells[4].Value.ToString() == "Skipped")
-                {
-                    grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.RoyalBlue;
-                }
-                else if (grdAnime.Rows[i].Cells[4].Value.ToString() == "Watched")
-                {
-                    grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.ForestGreen;
-                }
-                else
-                {
-                    grdAnime.Rows[i].Cells[4].Style.ForeColor = Color.ForestGreen;
-                }
+
             }
 
             grdAnime.Columns[5].Visible = false;
-
         }
+
 
         private void grdAnime_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1 && e.ColumnIndex > 4)
+            if (e.RowIndex > -1 && e.ColumnIndex == 6)
             {
                 DataGridViewRow row = grdAnime.Rows[e.RowIndex];
-                frmHome home = (frmHome)ActiveForm;
-                home.viewSingleAnime(row.Cells[5].Value.ToString());
+                _frmHome.viewSingleAnime(row.Cells[5].Value.ToString());
                 // frmViewAnime formViewAnime = new frmViewAnime(row.Cells[5].Value.ToString());
                 // formViewAnime.Show();
+            }
+            else if(e.RowIndex > -1 && e.ColumnIndex == 7)
+            {
+                DataGridViewRow row = grdAnime.Rows[e.RowIndex];
+                int currentEpisode = _localStorageHandler.GetEpisodeCurrentlyOn(row.Cells[5].Value.ToString());
+                Anime selectedAnime = _localStorageHandler.GetAnimeById(row.Cells[5].Value.ToString());
+                if(currentEpisode == selectedAnime.Episodes)
+                {
+                    _frmHome.newMessage("Anime finished, Can't increment!", "fail");
+                    return;
+                }
+                _localStorageHandler.IncrementAnimeEpisodeByOne(row.Cells[5].Value.ToString());
+                _frmHome.newMessage("Episode Incremented!", "success");
+                InitTable();
+                this.Refresh();
             }
         }
 

@@ -44,3 +44,42 @@
 
             }
         }
+
+
+
+
+
+
+
+--- frmEditAnime START ---
+
+                if (row.Cells[1].Value.ToString() == "NotStarted" && row.Cells[0].Value.ToString() != "1")
+                {
+                    MessageBox.Show("Mark earlier episodes as 'Watched' or 'Skipped' to mark this episode");
+                }
+                else
+                {
+                    MessageBox.Show(row.Cells[2].Value.ToString());
+                    MessageBox.Show(column.HeaderText);
+
+
+                            private void btnRecentWatch_Click(object sender, EventArgs e)
+        {
+            //MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            //DialogResult result = MessageBox.Show($"Would you like to set this anime as recently watched?", "Set watched", buttons);
+            //if (result == DialogResult.Yes)
+            //{
+            //    localStorageHandler.UpdateRecentlyWatched(currentAnime.Id);
+            //}
+            //else
+            //{
+
+            //}
+        }
+
+
+
+
+
+
+--- frmEditAnime END ---

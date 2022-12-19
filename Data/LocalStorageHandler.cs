@@ -20,7 +20,7 @@ namespace AnimeWinForm.Data
             LocalDb.CreateTable<localSettings>();
             LocalDb.CreateTable<userSettings>();
             LocalDb.CreateTable<Anime>();
-            LocalDb.CreateTable<AnimeEpisodes>();
+            LocalDb.CreateTable<AnimeEpisode>();
             LocalDb.CreateTable<localSettings>();
         }
 
@@ -87,9 +87,9 @@ namespace AnimeWinForm.Data
             {
                 Guid newEpisodeUuid = Guid.NewGuid();
                 string newEpisodeUuidString = newEpisodeUuid.ToString();
-                query2 = $"INSERT INTO AnimeEpisodes (id, AnimeId, episodeNumber, status) VALUES ('${newEpisodeUuidString}', '{animeuuidString}', {i}, 'NotStarted')";
+                query2 = $"INSERT INTO AnimeEpisode (id, AnimeId, episodeNumber, status) VALUES ('${newEpisodeUuidString}', '{animeuuidString}', {i}, 'NotStarted')";
 
-                conn.Query<AnimeEpisodes>(query2);
+                conn.Query<AnimeEpisode>(query2);
             }
 
             conn.Close();
@@ -110,14 +110,14 @@ namespace AnimeWinForm.Data
 
         //}
 
-        public List<AnimeEpisodes> GetAnimeEpisodesByAnimeId(string Animeid)
+        public List<AnimeEpisode> GetAnimeEpisodesByAnimeId(string Animeid)
         {
             var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
             var conn = new SQLiteConnection(options);
 
-            string query = $"SELECT * FROM AnimeEpisodes WHERE Animeid = '{Animeid}' ";
+            string query = $"SELECT * FROM AnimeEpisode WHERE Animeid = '{Animeid}' ";
 
-            var results = conn.Query<AnimeEpisodes>(query);
+            var results = conn.Query<AnimeEpisode>(query);
 
             conn.Close();
             return results;
@@ -131,8 +131,8 @@ namespace AnimeWinForm.Data
             var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
             var conn = new SQLiteConnection(options);
 
-            string query = $"SELECT COUNT(episodeNumber) AS EpisodeNumber FROM AnimeEpisodes WHERE Animeid = '{Animeid}' AND Status = 'Watched' OR Animeid = '{Animeid}' AND Status = 'Skipped'";
-            var number = conn.Query<AnimeEpisodes>(query);
+            string query = $"SELECT COUNT(episodeNumber) AS EpisodeNumber FROM AnimeEpisode WHERE Animeid = '{Animeid}' AND Status = 'Watched' OR Animeid = '{Animeid}' AND Status = 'Skipped'";
+            var number = conn.Query<AnimeEpisode>(query);
 
             conn.Close();
 
@@ -163,13 +163,13 @@ namespace AnimeWinForm.Data
             var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
             var conn = new SQLiteConnection(options);
 
-            string query = $"SELECT id FROM AnimeEpisodes WHERE Animeid = '{Animeid}' AND status = 'NotStarted' ORDER BY episodeNumber ASC";
+            string query = $"SELECT id FROM AnimeEpisode WHERE Animeid = '{Animeid}' AND status = 'NotStarted' ORDER BY episodeNumber ASC";
 
-            var animeEpisode = conn.Query<AnimeEpisodes>(query);
+            var animeEpisode = conn.Query<AnimeEpisode>(query);
 
-            string query2 = $"UPDATE AnimeEpisodes SET status = 'Watched' WHERE Animeid = '{Animeid}' AND id = '{animeEpisode[0].Id}' ";
+            string query2 = $"UPDATE AnimeEpisode SET status = 'Watched' WHERE Animeid = '{Animeid}' AND id = '{animeEpisode[0].Id}' ";
 
-            var updatedAnimeEpisode = conn.Query<AnimeEpisodes>(query2);
+            var updatedAnimeEpisode = conn.Query<AnimeEpisode>(query2);
 
             conn.Close();
         }
@@ -183,13 +183,13 @@ namespace AnimeWinForm.Data
 
             if (Mark == "MarkWatched")
             {
-                query = $"UPDATE AnimeEpisodes SET status = 'Watched' WHERE id = '{AnimeEpisodeId}'";
-                var result = conn.Query<AnimeEpisodes>(query);
+                query = $"UPDATE AnimeEpisode SET status = 'Watched' WHERE id = '{AnimeEpisodeId}'";
+                var result = conn.Query<AnimeEpisode>(query);
             }
             else if(Mark == "MarkSkipped")
             {
-                query = $"UPDATE AnimeEpisodes SET status = 'Skipped' WHERE id = '{AnimeEpisodeId}'";
-                var result = conn.Query<AnimeEpisodes>(query);
+                query = $"UPDATE AnimeEpisode SET status = 'Skipped' WHERE id = '{AnimeEpisodeId}'";
+                var result = conn.Query<AnimeEpisode>(query);
             }
             else
             {
@@ -202,15 +202,27 @@ namespace AnimeWinForm.Data
         }
 
 
+        public void UnMarkAnimeEpisode(string AnimeEpisodeId)
+        {
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
+            string query;
+            query = $"UPDATE AnimeEpisode SET status = 'NotStarted' WHERE id = '{AnimeEpisodeId}'";
+            var result = conn.Query<AnimeEpisode>(query);
+
+        }
+
+
+
 
         public bool CheckAnimeEpisodeCount(string AnimeEpisodeId, string AnimeId)
         {
             var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
             var conn = new SQLiteConnection(options);
 
-            string query = $"SELECT episodeNumber FROM AnimeEpisodes WHERE id = '{AnimeEpisodeId}'";
+            string query = $"SELECT episodeNumber FROM AnimeEpisode WHERE id = '{AnimeEpisodeId}'";
 
-            var episodeNum = conn.Query<AnimeEpisodes>(query);
+            var episodeNum = conn.Query<AnimeEpisode>(query);
 
             if (episodeNum[0].EpisodeNumber == 1)
             {
@@ -221,9 +233,9 @@ namespace AnimeWinForm.Data
 
             int episodeBefore = episodeNum[0].EpisodeNumber - 1;
 
-            string query2 = $"SELECT status FROM AnimeEpisodes WHERE Animeid = '{AnimeId}' AND episodeNumber = {episodeBefore} ";
+            string query2 = $"SELECT status FROM AnimeEpisode WHERE Animeid = '{AnimeId}' AND episodeNumber = {episodeBefore} ";
 
-            var status = conn.Query<AnimeEpisodes>(query2);
+            var status = conn.Query<AnimeEpisode>(query2);
 
             if (status[0].Status == "Watched" || status[0].Status == "Skipped")
             {
@@ -257,9 +269,9 @@ namespace AnimeWinForm.Data
                 {
                     Guid newEpisodeUuid = Guid.NewGuid();
                     string newEpisodeUuidString = newEpisodeUuid.ToString();
-                    query2 = $"INSERT INTO AnimeEpisodes (id, AnimeId, episodeNumber, status) VALUES ('${newEpisodeUuidString}', '{AnimeId}', {i}, 'NotStarted')";
+                    query2 = $"INSERT INTO AnimeEpisode (id, AnimeId, episodeNumber, status) VALUES ('${newEpisodeUuidString}', '{AnimeId}', {i}, 'NotStarted')";
 
-                    conn.Query<AnimeEpisodes>(query2);
+                    conn.Query<AnimeEpisode>(query2);
                 }
             }
 
@@ -284,10 +296,10 @@ namespace AnimeWinForm.Data
             string query2;
 
             string deleteAnimeQuery = $"DELETE FROM Anime WHERE id = '{AnimeId}'";
-            string deleteAnimeEpisodes = $"DELETE FROM AnimeEpisodes WHERE Animeid = '{AnimeId}'";
+            string deleteAnimeEpisodes = $"DELETE FROM AnimeEpisode WHERE Animeid = '{AnimeId}'";
 
             conn.Query<Anime>(deleteAnimeQuery);
-            conn.Query<AnimeEpisodes>(deleteAnimeEpisodes);
+            conn.Query<AnimeEpisode>(deleteAnimeEpisodes);
 
 
 

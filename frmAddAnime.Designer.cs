@@ -79,9 +79,6 @@ namespace AnimeWinForm
             this.cmbSeason.Name = "cmbSeason";
             this.cmbSeason.Size = new System.Drawing.Size(118, 29);
             this.cmbSeason.TabIndex = 3;
-            this.cmbSeason.TextChanged += new System.EventHandler(this.cmbSeason_TextChanged);
-            this.cmbSeason.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbSeason_KeyDown);
-            this.cmbSeason.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbSeason_KeyPress);
             // 
             // cmbYear
             // 
@@ -140,9 +137,6 @@ namespace AnimeWinForm
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(103, 29);
             this.cmbYear.TabIndex = 4;
-            this.cmbYear.TextChanged += new System.EventHandler(this.cmbYear_TextChanged);
-            this.cmbYear.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbYear_KeyDown);
-            this.cmbYear.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbYear_KeyPress);
             // 
             // numEpisodes
             // 

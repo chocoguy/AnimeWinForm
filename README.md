@@ -7,6 +7,13 @@ I decided to use winforms because it was simple enough in the future I might mig
 Application is currently being developed, will work on it when I can. When version 1 is released I will include a full release with an executable and all that.
 
 
+## Update! December 18 - 2022
+
+Have not played around with this in a while, For the next release I plan to add a weekly schedule feature, the
+MPV conf toggler and cleaner UI. Will work on it when I can. But I have a good feeling that progress will be steady
+from now on
+
+
 ## Planned Features
 
 - Live database support as opposed to SQLite
@@ -14,3 +21,7 @@ Application is currently being developed, will work on it when I can. When versi
 - Torrenting feature
 - Weekly schedule form
 - Sleeker UI
+- MAL Integration
+- Migration to WxWidgets and C++ for cross platform usage
+- Proper landing page and executables
+

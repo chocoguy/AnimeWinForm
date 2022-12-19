@@ -15,6 +15,7 @@ namespace AnimeWinForm
         public frmAbout()
         {
             InitializeComponent();
+            frmHome frmHome;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -22,11 +23,6 @@ namespace AnimeWinForm
             frmHome home = (frmHome)ActiveForm;
             home.viewAllAnime();
             
-        }
-
-        private void btnGithub_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/chocoguy/AnimeWinForm");
         }
 
     }

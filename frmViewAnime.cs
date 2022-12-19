@@ -14,49 +14,59 @@ namespace AnimeWinForm
 {
     public partial class frmViewAnime : Form
     {
-        Anime currentAnime = new Anime();
-        LocalStorageHandler localStorageHandler = new LocalStorageHandler();
+        Anime _currentAnime;
+        LocalStorageHandler _localStorageHandler;
+        frmHome _frmHome;
+        int currentEpisode;
 
         public frmViewAnime(string AnimeId)
         {
             InitializeComponent();
+            _localStorageHandler = new();
+            _frmHome = (frmHome)ActiveForm;
+            _currentAnime = _localStorageHandler.GetAnimeById(AnimeId);
+            currentEpisode = _localStorageHandler.GetEpisodeCurrentlyOn(AnimeId);
+            _frmHome.Text = "AnimeWinForm - " + _currentAnime.Title;
 
-            currentAnime = localStorageHandler.GetAnimeById(AnimeId);
-            int currentEpisode = localStorageHandler.GetEpisodeCurrentlyOn(AnimeId);
+            InitForm();
 
-            lblAnimeTitle.Text = currentAnime.Title;
-            this.Text = "AnimeWinForm - " + currentAnime.Title;
+
+        }
+
+        private void InitForm()
+        {
+            lblAnimeTitle.Text = _currentAnime.Title;
             lblEpisodeOn.Text = currentEpisode.ToString();
-            lblEpisodes.Text = currentAnime.Episodes.ToString();
-            lblRating.Text = currentAnime.Rating;
-            lblSeason.Text = currentAnime.Season;
-            lblYear.Text = currentAnime.Year;
-            txtReview.Text = currentAnime.Review;
+            lblEpisodes.Text = _currentAnime.Episodes.ToString();
+            lblRating.Text = _currentAnime.Rating;
+            lblSeason.Text = _currentAnime.Season;
+            lblYear.Text = _currentAnime.Year;
+            txtReview.Text = _currentAnime.Review;
 
-            switch (currentAnime.Status)
+            switch (_currentAnime.Status)
             {
                 case "Watching":
-                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.Text = _currentAnime.Status;
                     lblStatus.ForeColor = Color.LawnGreen;
                     break;
 
                 case "Finished":
-                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.Text = _currentAnime.Status;
                     lblStatus.ForeColor = Color.LawnGreen;
                     break;
 
                 case "Dropped":
-                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.Text = _currentAnime.Status;
                     lblStatus.ForeColor = Color.Crimson;
                     break;
 
                 case "Stalled":
-                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.Text = _currentAnime.Status;
                     lblStatus.ForeColor = Color.Yellow;
                     break;
 
                 case "Not Started":
-                    lblStatus.Text = currentAnime.Status;
+                    lblStatus.Text = _currentAnime.Status;
                     lblStatus.ForeColor = Color.DodgerBlue;
                     break;
 
@@ -80,23 +90,20 @@ namespace AnimeWinForm
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            frmHome formHome = new frmHome();
+            frmHome formHome = new();
             this.Hide();
             formHome.Show();
         }
 
         private void btnIncrement_Click(object sender, EventArgs e)
         {
-            frmHome home = (frmHome)ActiveForm;
-            int currentEpisode = localStorageHandler.GetEpisodeCurrentlyOn(currentAnime.Id);
-            if (currentEpisode == currentAnime.Episodes)
+            if (currentEpisode == _currentAnime.Episodes)
             {
-                //MessageBox.Show("Anime has been finished, Can't increment!");
-                home.newMessage("Anime finished, Can't increment!", "fail");
+                _frmHome.newMessage("Anime finished, Can't increment!", "fail");
                 return;
             }
-            localStorageHandler.IncrementAnimeEpisodeByOne(currentAnime.Id);
-            home.newMessage("Episode Incremented!", "success");
+            _localStorageHandler.IncrementAnimeEpisodeByOne(_currentAnime.Id);
+            _frmHome.newMessage("Episode Incremented!", "success");
             this.Refresh();
         }
 
@@ -105,21 +112,10 @@ namespace AnimeWinForm
 
         }
 
-        private List<string> InterviewQuestion(string inputt)
-        {
-            string useless = inputt;
-            List<string> myArray = new List<string>();
-            myArray.Add("('a', 4)");
-            myArray.Add("('b', 3)");
-            myArray.Add("('c', 2)");
-            myArray.Add("('a', 1)");
-            return myArray;
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             frmHome home = (frmHome)ActiveForm;
-            home.editSingleAnime(currentAnime.Id);
+            home.editSingleAnime(_currentAnime.Id);
             //frmEditAnime formEditAnime = new frmEditAnime(currentAnime.Id);
             //formEditAnime.Show();
         }
