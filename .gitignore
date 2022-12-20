@@ -3,6 +3,10 @@
 Bin
 bin
 
+.vs
+/.vs
+./.vs
+
 
 obj/release
 ./obj/release

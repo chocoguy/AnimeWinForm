@@ -158,7 +158,15 @@ namespace AnimeWinForm
             frm.Show();
         }
 
-
+        private void btnViewSchedule_Click(object sender, EventArgs e)
+        {
+            mainPanel.Controls.Clear();
+            frmViewAnimeSchedule frm = new frmViewAnimeSchedule() { TopLevel= false, TopMost = true };
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            mainPanel.Controls.Add(frm);
+            frm.Show();
+        }
     }
 
 

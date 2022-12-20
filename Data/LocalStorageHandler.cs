@@ -22,6 +22,7 @@ namespace AnimeWinForm.Data
             LocalDb.CreateTable<Anime>();
             LocalDb.CreateTable<AnimeEpisode>();
             LocalDb.CreateTable<localSettings>();
+            LocalDb.CreateTable<AnimeSchedule>();
         }
 
         public void initLocalSettings()
@@ -306,75 +307,41 @@ namespace AnimeWinForm.Data
         }
 
 
-        //public void SetAnimeWatching(string Animeid)
+
+
+        // Anime Schedule Methods
+
+        public AnimeSchedule GetAnimeScheduleById(string ScheduleId)
+        {
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
+
+            string query = $"SELECT * from AnimeSchedule WHERE id == '{ScheduleId}'";
+
+
+            var result = conn.FindWithQuery<AnimeSchedule>(query);
+
+            return result;
+
+        }
+
+        //SELECT * FROM Anime WHERE id = (SELECT tuesdayAnime FROM AnimeSchedule WHERE id == '1')
+
+        //public List<Anime> GetAnimeScheduleAnimeById(string ScheduleId)
         //{
+        //    AnimeSchedule currentSchedule = GetAnimeScheduleById(ScheduleId);
+        //    List<Anime> animeAssignedToSchedule 
         //    var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
         //    var conn = new SQLiteConnection(options);
 
-        //    string query = $"UPDATE Anime SET startWatch = {DateTime.Now} WHERE id = '{Animeid}' ";
 
-        //    var result = conn.Query<Anime>(query);
+
         //}
 
-
-        //public void SetAnimeWatched(string Animeid)
+        //public List<AnimeSchedule> GetAllAnimeSchedules()
         //{
-        //    var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-        //    var conn = new SQLiteConnection(options);
-
-        //    string query = $"UPDATE Anime SET stopWatch = {DateTime.Now} WHERE id = '{Animeid}' ";
-
-        //    var result = conn.Query<Anime>(query);
-
 
         //}
-
-
-        //public void UpdateRecentlyWatched(string Animeid)
-        //{
-        //    var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-        //    var conn = new SQLiteConnection(options);
-
-        //    string query1 = "SELECT * FROM Anime WHERE lastWatched > 0";
-
-        //    var currentAnimes = conn.Query<Anime>(query1);
-
-        //    foreach (var anime in currentAnimes)
-        //    {
-        //        int newLastWatchedValue;
-        //        string tempQuery;
-        //        switch (anime.LastWatched)
-        //        {
-
-        //            case 1:
-        //                newLastWatchedValue = 2;
-        //                break;
-        //            case 2:
-        //                newLastWatchedValue = 3;
-        //                break;
-        //            case 3:
-        //                newLastWatchedValue = 4;
-        //                break;
-        //            case 5:
-        //                newLastWatchedValue = 0;
-        //                break;
-        //            default:
-        //                newLastWatchedValue = 0;
-        //                break;
-        //        }
-        //        tempQuery = $"UPDATE Anime SET lastWatched = {newLastWatchedValue} WHERE id = '{anime.Id}' ";
-        //        conn.Query<Anime>(tempQuery);
-        //    }
-
-        //    string query2 = $"UPDATE Anime SET lastWatched = 1 WHERE id = '{Animeid}' ";
-        //    conn.Query<Anime>(query2);
-
-        //    conn.Close();
-
-        //}
-
-
-
 
 
 

@@ -10,7 +10,13 @@
     <Compile Update="frmAddAnime.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmAddAnimeSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmEditAnime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmEditAnimeSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmHome.cs">
@@ -20,6 +26,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="frmViewAnime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="frmViewAnimeSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="SetupForms\frmSetup.cs">

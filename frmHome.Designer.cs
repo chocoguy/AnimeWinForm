@@ -36,6 +36,7 @@ namespace AnimeWinForm
             this.btnAddAnime = new System.Windows.Forms.Button();
             this.infoQuotelbl = new System.Windows.Forms.Label();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.btnViewSchedule = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label4
@@ -84,7 +85,7 @@ namespace AnimeWinForm
             this.btnAddAnime.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddAnime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAddAnime.ForeColor = System.Drawing.Color.White;
-            this.btnAddAnime.Location = new System.Drawing.Point(106, 12);
+            this.btnAddAnime.Location = new System.Drawing.Point(101, 12);
             this.btnAddAnime.Name = "btnAddAnime";
             this.btnAddAnime.Size = new System.Drawing.Size(83, 23);
             this.btnAddAnime.TabIndex = 33;
@@ -113,6 +114,20 @@ namespace AnimeWinForm
             this.mainPanel.Size = new System.Drawing.Size(903, 444);
             this.mainPanel.TabIndex = 35;
             // 
+            // btnViewSchedule
+            // 
+            this.btnViewSchedule.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnViewSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnViewSchedule.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnViewSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnViewSchedule.Location = new System.Drawing.Point(190, 12);
+            this.btnViewSchedule.Name = "btnViewSchedule";
+            this.btnViewSchedule.Size = new System.Drawing.Size(83, 23);
+            this.btnViewSchedule.TabIndex = 36;
+            this.btnViewSchedule.Text = "Schedule";
+            this.btnViewSchedule.UseVisualStyleBackColor = false;
+            this.btnViewSchedule.Click += new System.EventHandler(this.btnViewSchedule_Click);
+            // 
             // frmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -120,6 +135,7 @@ namespace AnimeWinForm
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(897, 497);
+            this.Controls.Add(this.btnViewSchedule);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.infoQuotelbl);
             this.Controls.Add(this.btnAddAnime);
@@ -144,5 +160,6 @@ namespace AnimeWinForm
         private System.Windows.Forms.Button btnAddAnime;
         private System.Windows.Forms.Label infoQuotelbl;
         private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Button btnViewSchedule;
     }
 }
