@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AnimeWinForm
 {
-    public partial class frmAddAnimeSchedule : Form
+    public partial class frmAddEditAnimeSchedule : Form
     {
-        public frmAddAnimeSchedule()
+        public frmAddEditAnimeSchedule()
         {
             InitializeComponent();
         }

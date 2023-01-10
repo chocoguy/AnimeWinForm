@@ -13,6 +13,8 @@ namespace AnimeWinForm.Data
     public class LocalStorageHandler
     {
         private SQLiteConnection LocalDb;
+        private SQLiteConnectionString connectionString = new SQLiteConnectionString("./localstorage.sqlite3", false);
+        private SQLiteConnection conn;
 
         public LocalStorageHandler()
         {
@@ -23,25 +25,21 @@ namespace AnimeWinForm.Data
             LocalDb.CreateTable<AnimeEpisode>();
             LocalDb.CreateTable<localSettings>();
             LocalDb.CreateTable<AnimeSchedule>();
+            conn = new SQLiteConnection(connectionString);
         }
 
         public void initLocalSettings()
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query = $"INSERT INTO localsettings (id, setupDone, storageLocal) VALUES ('1', true, true)";
 
             conn.Query<localSettings>(query);
 
-            conn.Close();
+
         }
 
         public bool checkAppSetup()
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
-
             string query = $"SELECT setupDone FROM localsettings";
 
             var results = conn.Query<localSettings>(query);
@@ -58,14 +56,12 @@ namespace AnimeWinForm.Data
 
         public List<Anime> GetAllAnime()
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query = $"SELECT * FROM Anime";
 
             var results = conn.Query<Anime>(query);
 
-            conn.Close();
+
 
             return results;
         }
@@ -77,8 +73,6 @@ namespace AnimeWinForm.Data
             Guid animeuuid = Guid.NewGuid();
             string animeuuidString = animeuuid.ToString();
 
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query1 = $"INSERT INTO Anime (id, title, season, year, episodes, status) VALUES ('{animeuuidString}','{Title}', '{Season}', '{Year}', {Episodes}, '{Status}')";
 
@@ -93,7 +87,7 @@ namespace AnimeWinForm.Data
                 conn.Query<AnimeEpisode>(query2);
             }
 
-            conn.Close();
+
         }
 
         //public List<Anime> GetRecentlyWatchedAnime()
@@ -113,14 +107,10 @@ namespace AnimeWinForm.Data
 
         public List<AnimeEpisode> GetAnimeEpisodesByAnimeId(string Animeid)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query = $"SELECT * FROM AnimeEpisode WHERE Animeid = '{Animeid}' ";
 
             var results = conn.Query<AnimeEpisode>(query);
-
-            conn.Close();
             return results;
 
 
@@ -129,13 +119,9 @@ namespace AnimeWinForm.Data
 
         public int GetEpisodeCurrentlyOn(string Animeid)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query = $"SELECT COUNT(episodeNumber) AS EpisodeNumber FROM AnimeEpisode WHERE Animeid = '{Animeid}' AND Status = 'Watched' OR Animeid = '{Animeid}' AND Status = 'Skipped'";
             var number = conn.Query<AnimeEpisode>(query);
-
-            conn.Close();
 
             return number[0].EpisodeNumber;
         }
@@ -143,14 +129,15 @@ namespace AnimeWinForm.Data
 
         public Anime GetAnimeById(string Animeid)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
+
+            if(Animeid == null)
+            {
+                return new Anime();
+            }
 
             string query = $"SELECT * FROM Anime WHERE id = '{Animeid}'";
 
             var anime = conn.Query<Anime>(query);
-
-            conn.Close();
 
             return anime[0];
 
@@ -161,8 +148,6 @@ namespace AnimeWinForm.Data
 
         public void IncrementAnimeEpisodeByOne(string Animeid)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query = $"SELECT id FROM AnimeEpisode WHERE Animeid = '{Animeid}' AND status = 'NotStarted' ORDER BY episodeNumber ASC";
 
@@ -171,15 +156,11 @@ namespace AnimeWinForm.Data
             string query2 = $"UPDATE AnimeEpisode SET status = 'Watched' WHERE Animeid = '{Animeid}' AND id = '{animeEpisode[0].Id}' ";
 
             var updatedAnimeEpisode = conn.Query<AnimeEpisode>(query2);
-
-            conn.Close();
         }
 
 
         public void MarkAnimeEpisode(string Mark, string AnimeEpisodeId)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
             string query;
 
             if (Mark == "MarkWatched")
@@ -197,16 +178,11 @@ namespace AnimeWinForm.Data
 
             }
 
-
-            conn.Close();
-
         }
 
 
         public void UnMarkAnimeEpisode(string AnimeEpisodeId)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
             string query;
             query = $"UPDATE AnimeEpisode SET status = 'NotStarted' WHERE id = '{AnimeEpisodeId}'";
             var result = conn.Query<AnimeEpisode>(query);
@@ -218,8 +194,6 @@ namespace AnimeWinForm.Data
 
         public bool CheckAnimeEpisodeCount(string AnimeEpisodeId, string AnimeId)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
 
             string query = $"SELECT episodeNumber FROM AnimeEpisode WHERE id = '{AnimeEpisodeId}'";
 
@@ -251,8 +225,6 @@ namespace AnimeWinForm.Data
 
         public bool UpdateAnime(string AnimeId, string Title, string Season, string Year, int Episodes, string Status, string Rating, string Review)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
             string query2;
 
             string episodeQuery = $"SELECT episodes FROM Anime WHERE id = '{AnimeId}'";
@@ -292,8 +264,7 @@ namespace AnimeWinForm.Data
         public void DeleteAnime(string AnimeId)
         {
 
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
+
             string query2;
 
             string deleteAnimeQuery = $"DELETE FROM Anime WHERE id = '{AnimeId}'";
@@ -313,8 +284,7 @@ namespace AnimeWinForm.Data
 
         public AnimeSchedule GetAnimeScheduleById(string ScheduleId)
         {
-            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-            var conn = new SQLiteConnection(options);
+
 
             string query = $"SELECT * from AnimeSchedule WHERE id == '{ScheduleId}'";
 
@@ -323,6 +293,15 @@ namespace AnimeWinForm.Data
 
             return result;
 
+        }
+
+        public List<AnimeSchedule> GetAnimeSchedules()
+        {
+
+
+            string query = $"SELECT * from AnimeSchedule";
+
+            return conn.Query<AnimeSchedule>(query);
         }
 
         //SELECT * FROM Anime WHERE id = (SELECT tuesdayAnime FROM AnimeSchedule WHERE id == '1')

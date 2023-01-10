@@ -17,9 +17,6 @@ namespace AnimeWinForm.Data.AnimeTables
         [Column("title")]
         public string Title { get; set; }
 
-        [Column("status")]
-        public string Status { get; set; }
-
         [Column("animeCount")]
         public int AnimeCount { get; set; }
 
@@ -28,30 +25,30 @@ namespace AnimeWinForm.Data.AnimeTables
 
         [Indexed]
         [Column("mondayAnime")]
-        public int MondayAnime { get; set; }
+        public string MondayAnime { get; set; }
 
         [Indexed]
         [Column("tuesdayAnime")]
-        public int TuesdayAnime { get; set;}
+        public string TuesdayAnime { get; set;}
 
         [Indexed]
         [Column("wednesdayAnime")]
-        public int WednesdayAnime { get; set; }
+        public string WednesdayAnime { get; set; }
 
         [Indexed]
         [Column("thursdayAnime")]
-        public int ThursdayAnime { get; set; }
+        public string ThursdayAnime { get; set; }
 
         [Indexed]
         [Column("fridayAnime")]
-        public int FridayAnime { get; set; }
+        public string FridayAnime { get; set; }
 
         [Indexed]
         [Column("saturdayAnime")]
-        public int SaturdayAnime { get; set; }
+        public string SaturdayAnime { get; set; }
 
         [Indexed]
         [Column("sundayAnime")]
-        public int SundayAnime { get; set; }
+        public string SundayAnime { get; set; }
     }
 }
