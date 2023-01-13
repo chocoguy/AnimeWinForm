@@ -10,9 +10,6 @@
     <Compile Update="frmAddAnime.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="frmAddAnimeSchedule.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="frmEditAnime.cs">
       <SubType>Form</SubType>
     </Compile>

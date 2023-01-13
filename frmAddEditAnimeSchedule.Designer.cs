@@ -29,60 +29,60 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddEditAnimeSchedule));
-            this.btnAddSchedule = new System.Windows.Forms.Button();
-            this.btnEditSchedule = new System.Windows.Forms.Button();
-            this.cmbAnimeSchedules = new System.Windows.Forms.ComboBox();
+            this.btnSaveSchedule = new System.Windows.Forms.Button();
+            this.btnDeleteSchedule = new System.Windows.Forms.Button();
+            this.cmbAnimeMon = new System.Windows.Forms.ComboBox();
             this.lblSeason = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbAnimeTue = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbAnimeWed = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cmbAnimeThu = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cmbAnimeFri = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.cmbAnimeSat = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cmbAnimeSun = new System.Windows.Forms.ComboBox();
+            this.txtScheduleTitle = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkIsCurrent = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
-            // btnAddSchedule
+            // btnSaveSchedule
             // 
-            this.btnAddSchedule.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnAddSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnAddSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnAddSchedule.Location = new System.Drawing.Point(731, 364);
-            this.btnAddSchedule.Name = "btnAddSchedule";
-            this.btnAddSchedule.Size = new System.Drawing.Size(141, 35);
-            this.btnAddSchedule.TabIndex = 18;
-            this.btnAddSchedule.Text = "Save Schedule";
-            this.btnAddSchedule.UseVisualStyleBackColor = false;
+            this.btnSaveSchedule.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnSaveSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSaveSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSaveSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnSaveSchedule.Location = new System.Drawing.Point(731, 364);
+            this.btnSaveSchedule.Name = "btnSaveSchedule";
+            this.btnSaveSchedule.Size = new System.Drawing.Size(141, 35);
+            this.btnSaveSchedule.TabIndex = 18;
+            this.btnSaveSchedule.Text = "Save Schedule";
+            this.btnSaveSchedule.UseVisualStyleBackColor = false;
             // 
-            // btnEditSchedule
+            // btnDeleteSchedule
             // 
-            this.btnEditSchedule.BackColor = System.Drawing.Color.Crimson;
-            this.btnEditSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEditSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnEditSchedule.ForeColor = System.Drawing.Color.White;
-            this.btnEditSchedule.Location = new System.Drawing.Point(565, 364);
-            this.btnEditSchedule.Name = "btnEditSchedule";
-            this.btnEditSchedule.Size = new System.Drawing.Size(160, 35);
-            this.btnEditSchedule.TabIndex = 21;
-            this.btnEditSchedule.Text = "Delete Schedule";
-            this.btnEditSchedule.UseVisualStyleBackColor = false;
+            this.btnDeleteSchedule.BackColor = System.Drawing.Color.Crimson;
+            this.btnDeleteSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDeleteSchedule.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDeleteSchedule.ForeColor = System.Drawing.Color.White;
+            this.btnDeleteSchedule.Location = new System.Drawing.Point(565, 364);
+            this.btnDeleteSchedule.Name = "btnDeleteSchedule";
+            this.btnDeleteSchedule.Size = new System.Drawing.Size(160, 35);
+            this.btnDeleteSchedule.TabIndex = 21;
+            this.btnDeleteSchedule.Text = "Delete Schedule";
+            this.btnDeleteSchedule.UseVisualStyleBackColor = false;
             // 
-            // cmbAnimeSchedules
+            // cmbAnimeMon
             // 
-            this.cmbAnimeSchedules.FormattingEnabled = true;
-            this.cmbAnimeSchedules.Location = new System.Drawing.Point(153, 131);
-            this.cmbAnimeSchedules.Name = "cmbAnimeSchedules";
-            this.cmbAnimeSchedules.Size = new System.Drawing.Size(173, 23);
-            this.cmbAnimeSchedules.TabIndex = 22;
+            this.cmbAnimeMon.FormattingEnabled = true;
+            this.cmbAnimeMon.Location = new System.Drawing.Point(153, 131);
+            this.cmbAnimeMon.Name = "cmbAnimeMon";
+            this.cmbAnimeMon.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeMon.TabIndex = 22;
             // 
             // lblSeason
             // 
@@ -108,13 +108,13 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Tuesday";
             // 
-            // comboBox1
+            // cmbAnimeTue
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(153, 169);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(173, 23);
-            this.comboBox1.TabIndex = 24;
+            this.cmbAnimeTue.FormattingEnabled = true;
+            this.cmbAnimeTue.Location = new System.Drawing.Point(153, 169);
+            this.cmbAnimeTue.Name = "cmbAnimeTue";
+            this.cmbAnimeTue.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeTue.TabIndex = 24;
             // 
             // label2
             // 
@@ -126,15 +126,15 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 25);
             this.label2.TabIndex = 27;
-            this.label2.Text = "Wedensday";
+            this.label2.Text = "Wednesday";
             // 
-            // comboBox2
+            // cmbAnimeWed
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(153, 209);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(173, 23);
-            this.comboBox2.TabIndex = 26;
+            this.cmbAnimeWed.FormattingEnabled = true;
+            this.cmbAnimeWed.Location = new System.Drawing.Point(153, 209);
+            this.cmbAnimeWed.Name = "cmbAnimeWed";
+            this.cmbAnimeWed.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeWed.TabIndex = 26;
             // 
             // label3
             // 
@@ -148,13 +148,13 @@
             this.label3.TabIndex = 29;
             this.label3.Text = "Thursday";
             // 
-            // comboBox3
+            // cmbAnimeThu
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(153, 253);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(173, 23);
-            this.comboBox3.TabIndex = 28;
+            this.cmbAnimeThu.FormattingEnabled = true;
+            this.cmbAnimeThu.Location = new System.Drawing.Point(153, 253);
+            this.cmbAnimeThu.Name = "cmbAnimeThu";
+            this.cmbAnimeThu.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeThu.TabIndex = 28;
             // 
             // label4
             // 
@@ -168,13 +168,13 @@
             this.label4.TabIndex = 31;
             this.label4.Text = "Friday";
             // 
-            // comboBox4
+            // cmbAnimeFri
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(464, 136);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(173, 23);
-            this.comboBox4.TabIndex = 30;
+            this.cmbAnimeFri.FormattingEnabled = true;
+            this.cmbAnimeFri.Location = new System.Drawing.Point(464, 136);
+            this.cmbAnimeFri.Name = "cmbAnimeFri";
+            this.cmbAnimeFri.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeFri.TabIndex = 30;
             // 
             // label5
             // 
@@ -188,13 +188,13 @@
             this.label5.TabIndex = 33;
             this.label5.Text = "Saturday";
             // 
-            // comboBox5
+            // cmbAnimeSat
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(464, 174);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(173, 23);
-            this.comboBox5.TabIndex = 32;
+            this.cmbAnimeSat.FormattingEnabled = true;
+            this.cmbAnimeSat.Location = new System.Drawing.Point(464, 174);
+            this.cmbAnimeSat.Name = "cmbAnimeSat";
+            this.cmbAnimeSat.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeSat.TabIndex = 32;
             // 
             // label6
             // 
@@ -208,20 +208,20 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "Sunday";
             // 
-            // comboBox6
+            // cmbAnimeSun
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(464, 214);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(173, 23);
-            this.comboBox6.TabIndex = 34;
+            this.cmbAnimeSun.FormattingEnabled = true;
+            this.cmbAnimeSun.Location = new System.Drawing.Point(464, 214);
+            this.cmbAnimeSun.Name = "cmbAnimeSun";
+            this.cmbAnimeSun.Size = new System.Drawing.Size(173, 23);
+            this.cmbAnimeSun.TabIndex = 34;
             // 
-            // textBox1
+            // txtScheduleTitle
             // 
-            this.textBox1.Location = new System.Drawing.Point(177, 57);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(225, 23);
-            this.textBox1.TabIndex = 36;
+            this.txtScheduleTitle.Location = new System.Drawing.Point(177, 57);
+            this.txtScheduleTitle.Name = "txtScheduleTitle";
+            this.txtScheduleTitle.Size = new System.Drawing.Size(225, 23);
+            this.txtScheduleTitle.TabIndex = 36;
             // 
             // label7
             // 
@@ -235,18 +235,18 @@
             this.label7.TabIndex = 37;
             this.label7.Text = "Title";
             // 
-            // checkBox1
+            // chkIsCurrent
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.Color.Transparent;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(508, 57);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(119, 29);
-            this.checkBox1.TabIndex = 38;
-            this.checkBox1.Text = "Is Current";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.chkIsCurrent.AutoSize = true;
+            this.chkIsCurrent.BackColor = System.Drawing.Color.Transparent;
+            this.chkIsCurrent.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.chkIsCurrent.ForeColor = System.Drawing.Color.White;
+            this.chkIsCurrent.Location = new System.Drawing.Point(508, 57);
+            this.chkIsCurrent.Name = "chkIsCurrent";
+            this.chkIsCurrent.Size = new System.Drawing.Size(119, 29);
+            this.chkIsCurrent.TabIndex = 38;
+            this.chkIsCurrent.Text = "Is Current";
+            this.chkIsCurrent.UseVisualStyleBackColor = false;
             // 
             // frmAddEditAnimeSchedule
             // 
@@ -255,25 +255,25 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(884, 411);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkIsCurrent);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtScheduleTitle);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.cmbAnimeSun);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.cmbAnimeSat);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.cmbAnimeFri);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cmbAnimeThu);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.cmbAnimeWed);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbAnimeTue);
             this.Controls.Add(this.lblSeason);
-            this.Controls.Add(this.cmbAnimeSchedules);
-            this.Controls.Add(this.btnEditSchedule);
-            this.Controls.Add(this.btnAddSchedule);
+            this.Controls.Add(this.cmbAnimeMon);
+            this.Controls.Add(this.btnDeleteSchedule);
+            this.Controls.Add(this.btnSaveSchedule);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(900, 450);
             this.MinimumSize = new System.Drawing.Size(900, 450);
@@ -286,24 +286,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAddSchedule;
-        private System.Windows.Forms.Button btnEditSchedule;
-        private System.Windows.Forms.ComboBox cmbAnimeSchedules;
+        private System.Windows.Forms.Button btnSaveSchedule;
+        private System.Windows.Forms.Button btnDeleteSchedule;
+        private System.Windows.Forms.ComboBox cmbAnimeMon;
         private System.Windows.Forms.Label lblSeason;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbAnimeTue;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbAnimeWed;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbAnimeThu;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cmbAnimeFri;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ComboBox cmbAnimeSat;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox cmbAnimeSun;
+        private System.Windows.Forms.TextBox txtScheduleTitle;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkIsCurrent;
     }
 }

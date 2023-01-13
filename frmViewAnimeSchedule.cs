@@ -47,25 +47,6 @@ namespace AnimeWinForm
                     cmbAnimeSchedules.SelectedItem = schedule;
                 }
             }
-
-
-
-
-            
-
-
-            
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.MondayAnime).Title).Group = listViewAnimeSchedule.Groups[0];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.TuesdayAnime).Title).Group = listViewAnimeSchedule.Groups[1];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.WednesdayAnime).Title).Group = listViewAnimeSchedule.Groups[2];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.ThursdayAnime).Title).Group = listViewAnimeSchedule.Groups[3];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.FridayAnime).Title).Group = listViewAnimeSchedule.Groups[4];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.SaturdayAnime).Title).Group = listViewAnimeSchedule.Groups[5];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.SundayAnime).Title).Group = listViewAnimeSchedule.Groups[6];
-
-
-
-
         }
 
         private void cmbAnimeSchedules_DisplayMemberChanged(object sender, EventArgs e)
@@ -75,9 +56,6 @@ namespace AnimeWinForm
 
         private void cmbAnimeSchedules_SelectedValueChanged(object sender, EventArgs e)
         {
-
-
-
             if(cmbAnimeSchedules.SelectedIndex != -1)
             {
                 listViewAnimeSchedule.Items.Clear();
@@ -91,19 +69,6 @@ namespace AnimeWinForm
                 listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.SaturdayAnime).Title).Group = listViewAnimeSchedule.Groups[5];
                 listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.SundayAnime).Title).Group = listViewAnimeSchedule.Groups[6];
             }
-
-           
-
-            //_currentSchedule = _localStorageHandler.GetAnimeScheduleById(cmbAnimeSchedules.SelectedValue.ToString());
-
-            //listViewAnimeSchedule.Items.Clear();
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.MondayAnime).Title).Group = listViewAnimeSchedule.Groups[0];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.TuesdayAnime).Title).Group = listViewAnimeSchedule.Groups[1];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.WednesdayAnime).Title).Group = listViewAnimeSchedule.Groups[2];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.ThursdayAnime).Title).Group = listViewAnimeSchedule.Groups[3];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.FridayAnime).Title).Group = listViewAnimeSchedule.Groups[4];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.SaturdayAnime).Title).Group = listViewAnimeSchedule.Groups[5];
-            //listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(_currentSchedule.SundayAnime).Title).Group = listViewAnimeSchedule.Groups[6];
         }
     }
 }
