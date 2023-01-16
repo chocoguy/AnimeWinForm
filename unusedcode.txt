@@ -154,3 +154,9 @@
         //    conn.Close();
 
         //}
+
+
+                        //MessageBox.Show(cmbAnimeMon.SelectedValue.ToString());
+                //MessageBox.Show(cmbAnimeMon.Items.IndexOf(monani).ToString());
+                //cmbAnimeMon.SelectedValue = "das";
+                //MessageBox.Show(cmbAnimeMon.SelectedValue.ToString());

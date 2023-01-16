@@ -87,6 +87,26 @@ namespace AnimeWinForm
             frm.Show();
         }
 
+        public void AddEditAnimeSchedule(string id)
+        {
+            this.mainPanel.Controls.Clear();
+            frmAddEditAnimeSchedule frm = new frmAddEditAnimeSchedule(id) { TopLevel = false, TopMost= true };
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frm);
+            frm.Show();
+        }
+
+        public void viewAnimeSchedules()
+        {
+            this.mainPanel.Controls.Clear();
+            frmViewAnimeSchedule frm = new frmViewAnimeSchedule() { TopLevel = false, TopMost = true };
+            frm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            this.mainPanel.Controls.Add(frm);
+            frm.Show();
+        }
+
         public async void newMessage(string Message, string Type)
         {
             if(Type == "success")

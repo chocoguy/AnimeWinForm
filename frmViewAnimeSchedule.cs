@@ -27,6 +27,7 @@ namespace AnimeWinForm
             InitializeComponent();
             _localStorageHandler = new();
             _frmHome = (frmHome)ActiveForm;
+            _frmHome.Text = "AnimeWinForm - Schedules";
 
             InitForm();
 
@@ -47,6 +48,12 @@ namespace AnimeWinForm
                     cmbAnimeSchedules.SelectedItem = schedule;
                 }
             }
+
+            if(_animeSchedules.Count < 1)
+            {
+                btnEditSchedule.Hide();
+            }
+
         }
 
         private void cmbAnimeSchedules_DisplayMemberChanged(object sender, EventArgs e)
@@ -69,6 +76,18 @@ namespace AnimeWinForm
                 listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.SaturdayAnime).Title).Group = listViewAnimeSchedule.Groups[5];
                 listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.SundayAnime).Title).Group = listViewAnimeSchedule.Groups[6];
             }
+        }
+
+        private void btnAddSchedule_Click(object sender, EventArgs e)
+        {
+            _frmHome.AddEditAnimeSchedule("-1");
+        }
+
+        private void btnEditSchedule_Click(object sender, EventArgs e)
+        {
+            var res = cmbAnimeSchedules.Items[cmbAnimeSchedules.SelectedIndex];
+            AnimeSchedule resAnime = (AnimeSchedule)res;
+            _frmHome.AddEditAnimeSchedule(resAnime.Id);
         }
     }
 }

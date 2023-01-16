@@ -86,7 +86,8 @@ namespace AnimeWinForm
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(157, 25);
             this.label4.TabIndex = 30;
-            this.label4.Text = "Decahex_ - 2022";
+            this.label4.Text = "Decahex_ - 2023";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // btnOk
             // 
@@ -112,7 +113,7 @@ namespace AnimeWinForm
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(166, 25);
             this.label5.TabIndex = 33;
-            this.label5.Text = "Version: BETA 1.0";
+            this.label5.Text = "Version: BETA 2.0";
             // 
             // pictureBox1
             // 

@@ -130,7 +130,7 @@ namespace AnimeWinForm.Data
         public Anime GetAnimeById(string Animeid)
         {
 
-            if(Animeid == null)
+            if(string.IsNullOrEmpty(Animeid))
             {
                 return new Anime();
             }
@@ -303,6 +303,54 @@ namespace AnimeWinForm.Data
 
             return conn.Query<AnimeSchedule>(query);
         }
+
+        public bool UpdateAnimeSchedule(AnimeSchedule schedule)
+        {
+            int dbBool = 0;
+
+            if(schedule.IsCurrentSchedule) { dbBool = 1; }
+
+            string query = $"UPDATE AnimeSchedule SET title = '{schedule.Title}', animeCount = 1, isCurrentSchedule = {dbBool}, mondayAnime =  '{schedule.MondayAnime}', tuesdayAnime = '{schedule.TuesdayAnime}', wednesdayAnime = '{schedule.WednesdayAnime}', thursdayAnime = '{schedule.ThursdayAnime}', fridayAnime = '{schedule.FridayAnime}', saturdayAnime = '{schedule.SaturdayAnime}', sundayAnime = '{schedule.SundayAnime}' WHERE Id = '{schedule.Id}' ";
+
+            if(schedule.IsCurrentSchedule)
+            {
+                string query2 = $"UPDATE AnimeSchedule SET isCurrentSchedule = 0 WHERE id != '{schedule.Id}' ";
+                conn.Query<AnimeSchedule>(query2);
+            }
+
+            conn.Query<AnimeSchedule>(query);
+
+            return true;
+
+        }
+
+        public void SaveNewAnimeSchedule(AnimeSchedule schedule)
+        {
+            Guid scheduleGuid = Guid.NewGuid();
+
+            int dbBool = 0;
+
+            if (schedule.IsCurrentSchedule) { dbBool = 1; }
+
+            string query = $"INSERT INTO AnimeSchedule (id, title, animeCount, isCurrentSchedule, mondayAnime, tuesdayAnime, wednesdayAnime, thursdayAnime, fridayAnime, saturdayAnime, sundayAnime) VALUES ( '{scheduleGuid}', '{schedule.Title}', 3,  {dbBool}, '{schedule.MondayAnime}', '{schedule.TuesdayAnime}', '{schedule.WednesdayAnime}', '{schedule.ThursdayAnime}', '{schedule.FridayAnime}', '{schedule.SaturdayAnime}', '{schedule.SundayAnime}' )";
+
+            if (schedule.IsCurrentSchedule)
+            {
+                string query2 = $"UPDATE AnimeSchedule SET isCurrentSchedule = 0 WHERE id != '{schedule.Id}' ";
+                conn.Query<AnimeSchedule>(query2);
+            }
+
+            conn.Query<AnimeSchedule>(query);
+
+        }
+
+        public void DeleteAnimeSchedule(string AnimeScheduleId)
+        {
+            string query = $"DELETE FROM AnimeSchedule WHERE id = '{AnimeScheduleId}'";
+            conn.Query<AnimeSchedule>(query);
+        }
+
+
 
         //SELECT * FROM Anime WHERE id = (SELECT tuesdayAnime FROM AnimeSchedule WHERE id == '1')
 

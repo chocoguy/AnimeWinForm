@@ -62,6 +62,7 @@
             this.btnSaveSchedule.TabIndex = 18;
             this.btnSaveSchedule.Text = "Save Schedule";
             this.btnSaveSchedule.UseVisualStyleBackColor = false;
+            this.btnSaveSchedule.Click += new System.EventHandler(this.btnSaveSchedule_Click);
             // 
             // btnDeleteSchedule
             // 
@@ -75,10 +76,13 @@
             this.btnDeleteSchedule.TabIndex = 21;
             this.btnDeleteSchedule.Text = "Delete Schedule";
             this.btnDeleteSchedule.UseVisualStyleBackColor = false;
+            this.btnDeleteSchedule.Click += new System.EventHandler(this.btnDeleteSchedule_Click);
             // 
             // cmbAnimeMon
             // 
             this.cmbAnimeMon.FormattingEnabled = true;
+            this.cmbAnimeMon.Items.AddRange(new object[] {
+            ""});
             this.cmbAnimeMon.Location = new System.Drawing.Point(153, 131);
             this.cmbAnimeMon.Name = "cmbAnimeMon";
             this.cmbAnimeMon.Size = new System.Drawing.Size(173, 23);
