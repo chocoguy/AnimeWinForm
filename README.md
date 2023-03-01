@@ -13,15 +13,22 @@ Have not played around with this in a while, For the next release I plan to add 
 MPV conf toggler and cleaner UI. Will work on it when I can. But I have a good feeling that progress will be steady
 from now on
 
+## Update! February 28 - 2023
+
+Planned features have been scrapped, further development will be pushed to the new project: wxAnime
+Will have a final release early March, afterwards development will cease and I will being work on wxAnime
+
 
 ## Planned Features
 
-- Live database support as opposed to SQLite
-- MPV.conf file editor
-- Torrenting feature
+Everything striked-through is planned for wxAnime
+
+~~- Live database support as opposed to SQLite~~
+~~- MPV.conf file editor~~
+~~- Torrenting feature~~
 - Weekly schedule form
 - Sleeker UI
-- MAL Integration
+~~- MAL Integration~~
 - Migration to WxWidgets and C++ for cross platform usage
-- Proper landing page and executables
+~~- Proper landing page and executables~~
 

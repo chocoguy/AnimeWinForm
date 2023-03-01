@@ -160,3 +160,22 @@
                 //MessageBox.Show(cmbAnimeMon.Items.IndexOf(monani).ToString());
                 //cmbAnimeMon.SelectedValue = "das";
                 //MessageBox.Show(cmbAnimeMon.SelectedValue.ToString());
+
+
+
+
+
+        public List<Anime> GetRecentlyWatchedAnime()
+        {
+            var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
+            var conn = new SQLiteConnection(options);
+
+            string query = $"SELECT * FROM Anime WHERE lastWatched > 0 ORDER BY lastWatched ASC";
+
+            var results = conn.Query<Anime>(query);
+            //maybeeee might not work
+            conn.Close();
+            return results;
+
+
+        }

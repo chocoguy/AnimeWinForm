@@ -68,13 +68,13 @@ namespace AnimeWinForm
                 listViewAnimeSchedule.Items.Clear();
                 var res = cmbAnimeSchedules.Items[cmbAnimeSchedules.SelectedIndex];
                 AnimeSchedule resAnime = (AnimeSchedule)res;
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.MondayAnime).Title).Group = listViewAnimeSchedule.Groups[0];
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.TuesdayAnime).Title).Group = listViewAnimeSchedule.Groups[1];
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.WednesdayAnime).Title).Group = listViewAnimeSchedule.Groups[2];
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.ThursdayAnime).Title).Group = listViewAnimeSchedule.Groups[3];
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.FridayAnime).Title).Group = listViewAnimeSchedule.Groups[4];
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.SaturdayAnime).Title).Group = listViewAnimeSchedule.Groups[5];
-                listViewAnimeSchedule.Items.Add(_localStorageHandler.GetAnimeById(resAnime.SundayAnime).Title).Group = listViewAnimeSchedule.Groups[6];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.MondayAnime).Title).Group = listViewAnimeSchedule.Groups[0];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.TuesdayAnime).Title).Group = listViewAnimeSchedule.Groups[1];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.WednesdayAnime).Title).Group = listViewAnimeSchedule.Groups[2];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.ThursdayAnime).Title).Group = listViewAnimeSchedule.Groups[3];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.FridayAnime).Title).Group = listViewAnimeSchedule.Groups[4];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.SaturdayAnime).Title).Group = listViewAnimeSchedule.Groups[5];
+                listViewAnimeSchedule.Items.Add("    " + _localStorageHandler.GetAnimeById(resAnime.SundayAnime).Title).Group = listViewAnimeSchedule.Groups[6];
             }
         }
 

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AnimeWinForm.Data.AnimeTables;
 using AnimeWinForm.Data.LocalTables;
 using SQLite;
@@ -30,12 +27,8 @@ namespace AnimeWinForm.Data
 
         public void initLocalSettings()
         {
-
             string query = $"INSERT INTO localsettings (id, setupDone, storageLocal) VALUES ('1', true, true)";
-
             conn.Query<localSettings>(query);
-
-
         }
 
         public bool checkAppSetup()
@@ -61,8 +54,6 @@ namespace AnimeWinForm.Data
 
             var results = conn.Query<Anime>(query);
 
-
-
             return results;
         }
 
@@ -72,7 +63,6 @@ namespace AnimeWinForm.Data
             string query2;
             Guid animeuuid = Guid.NewGuid();
             string animeuuidString = animeuuid.ToString();
-
 
             string query1 = $"INSERT INTO Anime (id, title, season, year, episodes, status) VALUES ('{animeuuidString}','{Title}', '{Season}', '{Year}', {Episodes}, '{Status}')";
 
@@ -86,40 +76,19 @@ namespace AnimeWinForm.Data
 
                 conn.Query<AnimeEpisode>(query2);
             }
-
-
         }
-
-        //public List<Anime> GetRecentlyWatchedAnime()
-        //{
-        //    var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-        //    var conn = new SQLiteConnection(options);
-
-        //    string query = $"SELECT * FROM Anime WHERE lastWatched > 0 ORDER BY lastWatched ASC";
-
-        //    var results = conn.Query<Anime>(query);
-        //    //maybeeee might not work
-        //    conn.Close();
-        //    return results;
-
-
-        //}
 
         public List<AnimeEpisode> GetAnimeEpisodesByAnimeId(string Animeid)
         {
-
             string query = $"SELECT * FROM AnimeEpisode WHERE Animeid = '{Animeid}' ";
 
             var results = conn.Query<AnimeEpisode>(query);
             return results;
-
-
         }
         
 
         public int GetEpisodeCurrentlyOn(string Animeid)
         {
-
             string query = $"SELECT COUNT(episodeNumber) AS EpisodeNumber FROM AnimeEpisode WHERE Animeid = '{Animeid}' AND Status = 'Watched' OR Animeid = '{Animeid}' AND Status = 'Skipped'";
             var number = conn.Query<AnimeEpisode>(query);
 
@@ -129,7 +98,6 @@ namespace AnimeWinForm.Data
 
         public Anime GetAnimeById(string Animeid)
         {
-
             if(string.IsNullOrEmpty(Animeid))
             {
                 return new Anime();
@@ -140,15 +108,11 @@ namespace AnimeWinForm.Data
             var anime = conn.Query<Anime>(query);
 
             return anime[0];
-
-
-
         }
 
 
         public void IncrementAnimeEpisodeByOne(string Animeid)
         {
-
             string query = $"SELECT id FROM AnimeEpisode WHERE Animeid = '{Animeid}' AND status = 'NotStarted' ORDER BY episodeNumber ASC";
 
             var animeEpisode = conn.Query<AnimeEpisode>(query);
@@ -177,7 +141,6 @@ namespace AnimeWinForm.Data
             {
 
             }
-
         }
 
 
@@ -194,7 +157,6 @@ namespace AnimeWinForm.Data
 
         public bool CheckAnimeEpisodeCount(string AnimeEpisodeId, string AnimeId)
         {
-
             string query = $"SELECT episodeNumber FROM AnimeEpisode WHERE id = '{AnimeEpisodeId}'";
 
             var episodeNum = conn.Query<AnimeEpisode>(query);
@@ -203,8 +165,6 @@ namespace AnimeWinForm.Data
             {
                 return true;
             }
-
-
 
             int episodeBefore = episodeNum[0].EpisodeNumber - 1;
 
@@ -248,57 +208,72 @@ namespace AnimeWinForm.Data
                 }
             }
 
-
             string query = $"UPDATE Anime SET title = '{Title}', season = '{Season}', year = '{Year}', episodes = '{Episodes}', status = '{Status}', rating = '{Rating}', review = '{Review}' WHERE id = '{AnimeId}'";
 
             var result = conn.Query<Anime>(query);
 
             return true;
-
-            
-
-
         }
 
 
         public void DeleteAnime(string AnimeId)
         {
-
-
-            string query2;
-
             string deleteAnimeQuery = $"DELETE FROM Anime WHERE id = '{AnimeId}'";
             string deleteAnimeEpisodes = $"DELETE FROM AnimeEpisode WHERE Animeid = '{AnimeId}'";
+            
+            List<AnimeSchedule> schedules = GetAnimeSchedules();
+
+            #region Not proud of this
+            //not the best implementation but it should work
+            foreach (AnimeSchedule schedule in schedules)
+            {
+                if(schedule.MondayAnime == AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET mondayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+                else if(schedule.TuesdayAnime == AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET tuesdayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+                else if(schedule.WednesdayAnime == AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET wednesdayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+                else if(schedule.ThursdayAnime == AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET thursdayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+                else if(schedule.FridayAnime== AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET fridayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+                else if (schedule.SaturdayAnime == AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET saturdayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+                else if (schedule.SundayAnime == AnimeId)
+                {
+                    conn.Query<AnimeSchedule>($"UPDATE AnimeSchedule SET sundayAnime = '' WHERE id = '{schedule.Id}'");
+                }
+            }
+            #endregion
 
             conn.Query<Anime>(deleteAnimeQuery);
             conn.Query<AnimeEpisode>(deleteAnimeEpisodes);
-
-
-
         }
 
 
-
-
-        // Anime Schedule Methods
-
         public AnimeSchedule GetAnimeScheduleById(string ScheduleId)
         {
-
-
             string query = $"SELECT * from AnimeSchedule WHERE id == '{ScheduleId}'";
-
 
             var result = conn.FindWithQuery<AnimeSchedule>(query);
 
             return result;
-
         }
 
         public List<AnimeSchedule> GetAnimeSchedules()
         {
-
-
             string query = $"SELECT * from AnimeSchedule";
 
             return conn.Query<AnimeSchedule>(query);
@@ -321,7 +296,6 @@ namespace AnimeWinForm.Data
             conn.Query<AnimeSchedule>(query);
 
             return true;
-
         }
 
         public void SaveNewAnimeSchedule(AnimeSchedule schedule)
@@ -349,29 +323,5 @@ namespace AnimeWinForm.Data
             string query = $"DELETE FROM AnimeSchedule WHERE id = '{AnimeScheduleId}'";
             conn.Query<AnimeSchedule>(query);
         }
-
-
-
-        //SELECT * FROM Anime WHERE id = (SELECT tuesdayAnime FROM AnimeSchedule WHERE id == '1')
-
-        //public List<Anime> GetAnimeScheduleAnimeById(string ScheduleId)
-        //{
-        //    AnimeSchedule currentSchedule = GetAnimeScheduleById(ScheduleId);
-        //    List<Anime> animeAssignedToSchedule 
-        //    var options = new SQLiteConnectionString("./localstorage.sqlite3", false);
-        //    var conn = new SQLiteConnection(options);
-
-
-
-        //}
-
-        //public List<AnimeSchedule> GetAllAnimeSchedules()
-        //{
-
-        //}
-
-
-
-
     }
 }
